@@ -1,119 +1,106 @@
-* {
-  font-family: sans-serif; }
+a {
+  text-decoration: none !important;
+  color: #000; }
 
 .page-container {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column; }
+  z-index: 100; }
 
+/*---------------------STYLING FOR HEADER-----------------------*/
 header {
-  height: 60px;
+  height: 65px;
+  background: #00796B;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  margin-top: 20px; }
+  box-shadow: 0 -1px 10px #000; }
 
-.header__title {
-  margin: 0; }
+.header__site-name {
+  margin: 0;
+  padding: 0; }
+  .header__site-name a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Fugaz One', cursive;
+    letter-spacing: 3px; }
 
-.header__menu-toggle {
-  display: inline-block;
-  width: 50px; }
+.header__hamburger-menu {
+  width: 35px;
+  height: 30px; }
 
-.menu-toggle__divider {
+.hamburger-menu__line {
   display: block;
-  width: 50px;
-  height: 8px;
+  height: 5px;
+  width: 100%;
   margin-bottom: 5px;
-  border-radius: 20px;
-  background: orange; }
+  border-radius: 2px;
+  background-color: #fff; }
 
-.calendar-weather {
-  height: 330px; }
-
-.calendar-weather--add-event-btn {
-  text-align: center;
-  font-size: 5.3vw;
-  background: #5fb2c4;
-  height: 50px;
-  width: 200px;
-  margin: 10px auto;
-  border-radius: 5px; }
-
-.add-event-btn__btn-text {
-  line-height: 50px;
-  color: white; }
-  .add-event-btn__btn-text > .fa-plus-circle {
-    margin-left: 10px; }
-
-.event-info {
-  display: flex;
-  flex-direction: column;
-  margin-left: 25px;
-  margin-right: 25px;
-  margin-top: 25px; }
-
-.event-info__form {
-  font-size: 5.3vw; }
-
-.event-info__form__input {
+/*-------------------STYLING FOR MENU DRAWER--------------------*/
+.menu-container {
+  position: absolute;
+  height: 100vh;
   width: 100%;
-  margin-bottom: 15px;
-  border-style: solid;
-  border-width: 3px;
-  border-color: orange;
-  font-size: 5.3vw; }
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  transition: all 400ms cubic-bezier(0.4, 0.09, 0, 1.3);
+  text-align: right; }
+  .menu-container.close {
+    margin-left: -103vw; }
 
-.butt {
-  background-color: #3AB4C7;
-  color: white;
-  font-size: 5.3vw;
-  border: none; }
-
-.butt_submit-event {
-  margin-top: 25px; }
-
-.butt__back {
-  position: fixed;
-  bottom: 25px;
-  left: 25px;
-  padding: 5px; }
-
-.item-menu {
-  width: 100%;
-  height: 300px;
-  overflow: scroll; }
-
-.item-menu__item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 15px;
-  border: thin solid #989898;
-  padding: 0 10px; }
-
-.item-menu__item > img {
-  display: block;
-  width: 100px;
-  height: 100px; }
-
-.item-description {
+.menu-container__drawer-menu {
+  position: relative;
   display: inline-block;
-  font-size: 6vw;
-  margin: 0 30px;
-  color: black; }
+  height: 100vh;
+  width: 280px;
+  background-color: #fff;
+  box-shadow: -1px 0 20px #000; }
 
-.item-menu__show-more-btn {
-  height: 60px;
-  width: 100%;
+.drawer-menu__close-btn {
+  display: inline-block;
   text-align: center;
-  line-height: 60px;
-  font-size: 9vw;
-  color: black;
-  background: rgba(128, 128, 128, 0.65);
-  position: fixed;
-  bottom: 0; }
+  font-size: 40px;
+  font-weight: bold;
+  padding-right: 30px; }
+
+.drawer-menu__list {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: justify;
+  font-size: 20px; }
+  .drawer-menu__list li {
+    display: block;
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    border-bottom: thin solid #ccc;
+    line-height: 60px; }
+    .drawer-menu__list li i {
+      margin-right: 20px; }
+
+.drawer-menu__contact-section {
+  position: absolute;
+  height: 65px;
+  width: 100%;
+  bottom: 0;
+  display: flex; }
+
+.contact-section__help, .contact-section__contact {
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  line-height: 65px;
+  font-size: 18px;
+  font-weight: 500; }
+  .contact-section__help p, .contact-section__contact p {
+    margin: 0; }
+  .contact-section__help i, .contact-section__contact i {
+    margin-right: 7px; }
+
+.contact-section__contact {
+  border-right: thin solid #ccc; }
 
 /*# sourceMappingURL=main.css.map */

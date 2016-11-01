@@ -6,7 +6,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var hbs = require('express-hbs');
 
 var Forecast = require('forecast');
 
@@ -25,8 +25,11 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', handlebars());
-app.set('view engine', 'handlebars');
+app.engine('hbs', hbs.express3({
+  partialsDir: __dirname + '/views/partials'
+}));
+
+app.set('view engine', 'hbs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -38,25 +41,25 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// Initialize
-var forecast = new Forecast({
-  service: 'darksky',
-  key: '4996cab08400f882874b1f26572f8172',
-  units: 'celcius',
-  cache: true,      // Cache API requests
-  ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
-    minutes: 27,
-    seconds: 45
-  }
-});
-
-function getWeather(){
-  // Retrieve weather information from coordinates (Sydney, Australia)
-  forecast.get([-33.8683, 151.2086], function(err, weather) {
-    if(err) return console.dir(err);
-    return(weather);
-  });
-}
+// // Initialize
+// var forecast = new Forecast({
+//   service: 'darksky',
+//   key: '4996cab08400f882874b1f26572f8172',
+//   units: 'celcius',
+//   cache: true,      // Cache API requests
+//   ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
+//     minutes: 27,
+//     seconds: 45
+//   }
+// });
+//
+// function getWeather(){
+//   // Retrieve weather information from coordinates (Sydney, Australia)
+//   forecast.get([-33.8683, 151.2086], function(err, weather) {
+//     if(err) return console.dir(err);
+//     return(weather);
+//   });
+// }
 
 
 // development only
@@ -64,13 +67,17 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 // Add routes here
-app.get('/', index.view);
+//app.get('/', index.view);
+
 app.post('/', function (req, res) {
   res.send('Got a POST request');
 });
 
 
+app.get('/', function(req, res) {
+  res.render('index');
 
+});
 // Example route
 // app.get('/users', user.list);
 
