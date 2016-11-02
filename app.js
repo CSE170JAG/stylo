@@ -74,10 +74,7 @@ app.post('/', function (req, res) {
 });
 
 
-app.get('/', function(req, res) {
-  res.render('index');
-
-});
+app.get('/', index.view);
 // Example route
 // app.get('/users', user.list);
 

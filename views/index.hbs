@@ -55,7 +55,16 @@
 				</div>
 			</div>
 		</div>
-		{{> calendar}}
+
+		<div class="calendar-container">
+			<div class="calendar-container__toggle">
+				<div class="toggle__calendar active">Calendar</div>
+				<div class="toggle__events">Today's Events</div>
+			</div>
+			{{> calendar}}
+			{{> events}}
+		</div>
+		{{> hompage-clothes}}
 	</div>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

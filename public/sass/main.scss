@@ -2,6 +2,7 @@ $dark-primary-color: #00796B;
 $text-icon-color: #fff;
 $text-primary-color: #000;
 $menu-color: #fff;
+$accent-color: #607D8B;
 *{
 
 }
@@ -120,4 +121,66 @@ header{
 }
 .contact-section__contact{
   border-right: thin solid #ccc;
+}
+
+
+.calendar-container{
+  height: 300px;
+}
+.calendar-container__toggle{
+  height: 45px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .active{
+    border-bottom: 5px solid $accent-color;
+  }
+}
+
+.toggle__calendar,.toggle__events{
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 45px;
+  width: 100%;
+  height: 100%;
+}
+
+.calendar-container .calendar{
+  width: 100%;
+  height: calc(100% - 45px);
+  background: red;
+}
+.calendar-container .events{
+  display: none;
+  width: 100%;
+  height: calc(100% - 45px);
+  background: blue;
+}
+/*-------------------CLOTHES LIST STYLING--------------------*/
+.clothes-list{
+  //calculate the height based on the height of header and calendar container
+  height: calc(100vh - (300px + 65px ));
+  overflow: scroll;
+  border-top: 2px solid #ccc;
+}
+.clothes-list__cloth-item{
+  img,p{
+    display: block;
+  }
+  img{
+    width: 100px;
+    height: 100px;
+  }
+  p{
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+  align-items: center;
+  border-bottom: thin solid #ccc;
+  width: 100vw;
 }
