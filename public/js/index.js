@@ -50,12 +50,14 @@ function initializePage() {
 				url: "https://styloappstag.herokuapp.com/addEvent",
 				crossDomain:true,
 				dataType: "json",
-				data: sendData
+				data: sendData,
+				success: function (data, textStatus, jQxhr) {
+					document.location.href = '/';
+
+        }
 			 }
 		 );
 		});
-	 document.location.href = '/';
-
 	});
 
 }
