@@ -73,7 +73,7 @@ app.post('/addEvent', function(req, res){
   data.eventList.push(req.body)
 
   fs.writeFileSync('data.json', JSON.stringify(data));
-
+  console.log("Updated Data"); 
   res.header("Access-Control-Allow-Origin", "*");
   res.send("OK");
 });

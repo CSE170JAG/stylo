@@ -42,16 +42,18 @@ function initializePage() {
 			"description": $('#event-desc-input').val()
 		}
 
-		$.ajax(
-			{
-		  type: "POST",
-		  url: "https://styloappstag.herokuapp.com/addEvent",
-		  crossDomain:true,
-		  dataType: "json",
-		  data: sendData
-		 }
-	 );
-
+		$(function(){
+			console.log("Clicked");
+			$.ajax(
+				{
+				type: "POST",
+				url: "https://styloappstag.herokuapp.com/addEvent",
+				crossDomain:true,
+				dataType: "json",
+				data: sendData
+			 }
+		 );
+		});
 	 document.location.href = '/';
 
 	});
