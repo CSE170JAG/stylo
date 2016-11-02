@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Stylo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/main.css" rel="stylesheet">
+	<script src="https://use.fontawesome.com/9a7a508367.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+</head>
+<body>
+  <div class="page-container">
+    {{> navmenu}}
+
+    <form id="event-form">
+      <label>Event Title <br><input id="event-title-input" type="text" value=""></label>
+      <label>Event Date <br><input id="event-date-input" type="date" value=""></label>
+      <label>Event Time <br><input id="event-time-input" type="time" value=""></label>
+      <label>Event Description <br><textarea id="event-desc-input" type="text" value=""></textarea></label>
+    </form>
+
+    <div class="cancel-submit-container">
+      <a href="/"><button id="cancel-btn" type="button" name="button">Cancel</button></a>
+      <button id="submit-btn" type="button" name="button">Add Event</button>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/index.js" charset="utf-8"></script>
+</body>
+</html>

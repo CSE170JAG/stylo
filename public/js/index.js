@@ -29,17 +29,31 @@ function initializePage() {
 			$('.calendar-container .calendar').hide();
 	});
 
+	// https://styloappstag.herokuapp.com/test
+	//http://localhost:3000/test
+	$("#submit-btn").on('click', function(){
 
-	$("#testBTN").on('click', function(){
-		console.log("hi");
+		var sendData = {
+			"summary": $('#event-title-input').val(),
+			"start": {
+				"date": $('#event-date-input').val(),
+				"time": $('#event-time-input').val()
+			},
+			"description": $('#event-desc-input').val()
+		}
+
 		$.ajax(
 			{
 		  type: "POST",
-		  url: "https://styloappstag.herokuapp.com/test",
+		  url: "https://styloappstag.herokuapp.com/addEvent",
 		  crossDomain:true,
 		  dataType: "json",
-		  data:JSON.stringify({name: "Dennis", address: {city: "Dub", country: "IE"}})
+		  data: sendData
 		 }
-	  );
+	 );
+
+	 document.location.href = '/';
+
 	});
+
 }
