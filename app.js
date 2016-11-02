@@ -7,12 +7,14 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var hbs = require('express-hbs');
+var fs = require('fs');
 
 var Forecast = require('forecast');
 
-var index = require('./routes/index');
 // Example route
 // var user = require('./routes/user');
+var index = require('./routes/index');
+var test = require('./routes/test');
 
 var app = express();
 
@@ -64,11 +66,16 @@ if ('development' == app.get('env')) {
 //app.get('/', index.view);
 
 app.post('/', function (req, res) {
-  res.send('Got a POST request');
+  res.send(JSON.parse(fs.readFileSync('data.json', 'utf8')));
+});
+app.post('/test', function(req, res){
+  console.log(req.body);
+  res.header("Access-Control-Allow-Origin", "*");
+  res.send("OK");
 });
 
-
 app.get('/', index.view);
+app.get('/test', test.view);
 // Example route
 // app.get('/users', user.list);
 

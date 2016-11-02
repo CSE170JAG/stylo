@@ -1,0 +1,47 @@
+{
+  "clothList":[
+    {
+      "itemImg": "http://placehold.it/100x100",
+      "itemDesc": "Red T-Shirt"
+    },
+    {
+      "itemImg": "http://placehold.it/100x100",
+      "itemDesc": "Red T-Shirt"
+    },
+    {
+      "itemImg": "http://placehold.it/100x100",
+      "itemDesc": "Red T-Shirt"
+    },
+    {
+      "itemImg": "http://placehold.it/100x100",
+      "itemDesc": "Red T-Shirt"
+    },
+    {
+      "itemImg": "http://placehold.it/100x100",
+      "itemDesc": "Red T-Shirt"
+    },
+    {
+      "itemImg": "http://placehold.it/100x100",
+      "itemDesc": "Red T-Shirt"
+    }
+  ],
+  "eventList":[
+    {
+      "summary": "Event 1",
+      "start": {
+        "date": "11/5/16" ,
+        "time": "9 AM"
+      },
+      "description": "This is an example of a description for the event."
+    },
+    {
+      "summary": "Event 2",
+      "start": {
+        "date": "11/5/16" ,
+        "time": "9 AM"
+      },
+      "description": "This is an example of a description for the event."
+    }
+
+  ]
+}

@@ -26,7 +26,20 @@ function initializePage() {
 			$(".toggle__calendar").removeClass('active');
 			$(this).addClass('active');
 			$('.calendar-container .events').show();
-			$('.calendar-container .calendar').hide(); 
+			$('.calendar-container .calendar').hide();
 	});
 
+
+	$("#testBTN").on('click', function(){
+		console.log("hi");
+		$.ajax(
+			{
+		  type: "POST",
+		  url: "http://styloappstag.herokuapp.com/test",
+		  crossDomain:true,
+		  dataType: "json",
+		  data:JSON.stringify({name: "Dennis", address: {city: "Dub", country: "IE"}})
+		 }
+	  );
+	});
 }
