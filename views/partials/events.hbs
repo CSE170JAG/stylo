@@ -1,1 +1,7 @@
-<div class="events"></div>
+<div class="events">
+  {{#each eventList}}
+    <div class="clothes-list__cloth-item">
+      <p class="cloth-item__description">{{this.eventDesc}}</p>
+    </div>
+  {{/each}}
+</div>

@@ -54,11 +54,12 @@ header{
 /*-------------------STYLING FOR MENU DRAWER--------------------*/
 .menu-container{
   position: absolute;
+  z-index: 2;
   height: 100vh;
   width: 100%;
   top: 0;
   background: rgba(black, .6);
-  transition: all 400ms cubic-bezier(0.4, 0.09, 0, 1.3);
+  transition: all 400ms cubic-bezier(0.65, 0.05, 0.36, 1);
   text-align: right;
   &.close{
     margin-left: -103vw;
@@ -124,6 +125,24 @@ header{
 }
 
 
+.add-event-btn{
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+  background-color: $dark-primary-color;
+  position: absolute;
+  bottom: 40px;
+  right: 30px;
+  text-align: center;
+  color: white;
+  font-size: 60px;
+  line-height: 1;
+  box-shadow: 1px 2px 10px #000;
+  text-shadow: 1px 1px 3px #000;
+}
+
+/*-----------STYLING FOR CALENDAR & EVENTS----------*/
+
 .calendar-container{
   height: 300px;
 }
@@ -146,16 +165,16 @@ header{
   height: 100%;
 }
 
-.calendar-container .calendar{
+.calendar-container .calendar,.calendar-container .events{
   width: 100%;
   height: calc(100% - 45px);
+}
+.calendar-container .calendar{
   background: red;
 }
 .calendar-container .events{
   display: none;
-  width: 100%;
-  height: calc(100% - 45px);
-  background: blue;
+  overflow: scroll;
 }
 /*-------------------CLOTHES LIST STYLING--------------------*/
 .clothes-list{
