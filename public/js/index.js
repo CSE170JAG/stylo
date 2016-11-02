@@ -41,23 +41,17 @@ function initializePage() {
 			},
 			"description": $('#event-desc-input').val()
 		}
-
-		$(function(){
-			console.log("Clicked");
-			$.ajax(
-				{
+		console.log("Clicked");
+		$.ajax(
+			{
 				type: "POST",
-				url: "https://styloappstag.herokuapp.com/addEvent",
+				url: "http://localhost:3000/addEvent",
 				crossDomain:true,
 				dataType: "json",
 				data: sendData,
-				success: function (data, textStatus, jQxhr) {
-					document.location.href = '/';
-
-        }
-			 }
-		 );
-		});
+				complete: function(){ document.location.href = '/'; }
+			}
+	 );
 	});
 
 }
