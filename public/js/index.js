@@ -35,7 +35,7 @@ function initializePage() {
 		$.ajax(
 			{
 		  type: "POST",
-		  url: "http://styloappstag.herokuapp.com/test",
+		  url: "https://styloappstag.herokuapp.com/test",
 		  crossDomain:true,
 		  dataType: "json",
 		  data:JSON.stringify({name: "Dennis", address: {city: "Dub", country: "IE"}})
