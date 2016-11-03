@@ -45,7 +45,7 @@ function initializePage() {
 		$.ajax(
 			{
 				type: "POST",
-				url: "https://styloappstag.herokuapp.com/addEvent",
+				url: window.location.href+"addEvent",
 				crossDomain:true,
 				dataType: "json",
 				data: sendData,
