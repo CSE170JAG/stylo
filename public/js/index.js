@@ -45,13 +45,31 @@ function initializePage() {
 		$.ajax(
 			{
 				type: "POST",
-				url: "http://localhost:3000/addEvent",
+				url: "/addEvent",
 				crossDomain:true,
 				dataType: "json",
 				data: sendData,
 				complete: function(){ document.location.href = '/'; }
 			}
 	 );
+	});
+
+
+
+	$(".delete-edit__delete").on('click', function(){
+			var eventObj = ($(this).parent()).siblings()[0].children[0].children[0].innerText;
+			var eventTitle = eventObj.split(":")[1]
+			var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
+			if(deleteConfirm){
+				var postData = {
+					toDelete: eventTitle
+				}
+
+				$.post('/deleteEvent', postData, function(res){
+					document.location.href = '/manageEvents';
+					console.log(res)
+				})
+			}
 	});
 
 }
