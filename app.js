@@ -81,13 +81,33 @@ app.post('/addEvent', function(req, res){
   res.header("Access-Control-Allow-Origin", "*");
   res.send("OK");
 });
+app.post('/deleteEvent', function(req,res){
+  var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+  console.log(data.eventList)
+  var updatedEvents = data.eventList;
+  for(var j = 0; j < updatedEvents.length; j++){
+    var eventObj = updatedEvents[j];
+
+    if(eventObj["summary"].trim() === (req.body)["toDelete"].trim()){
+      updatedEvents.splice(j,1);
+    }
+  }
+  data.eventList = updatedEvents;
+  //console.log(req.body["toDelete"]);
+
+  fs.writeFileSync('data.json', JSON.stringify(data));
+  res.send("OK");
+});
 
 app.get('/', index.view);
 app.get('/addEvents', addEvents.view);
 app.get('/manageEvents', manageEvents.view);
 app.get('/accountPage', accountPage.view);
+<<<<<<< HEAD
 app.get('/settingPage', settingPage.view);
 app.get('/faqPage', faqPage.view);
+=======
+>>>>>>> 8a8bde9553855ef989bc538fb368943d330d01c6
 // Example route
 // app.get('/users', user.list);
 
