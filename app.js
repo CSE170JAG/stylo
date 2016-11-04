@@ -15,6 +15,8 @@ var Forecast = require('forecast');
 // var user = require('./routes/user');
 var index = require('./routes/index');
 var addEvents = require('./routes/addEvents');
+var manageEvents = require('./routes/manageEvents');
+var accountPage = require('./routes/accountPage');
 
 var app = express();
 
@@ -73,13 +75,15 @@ app.post('/addEvent', function(req, res){
   data.eventList.push(req.body)
 
   fs.writeFileSync('data.json', JSON.stringify(data));
-  console.log("Updated Data"); 
+  console.log("Updated Data");
   res.header("Access-Control-Allow-Origin", "*");
   res.send("OK");
 });
 
 app.get('/', index.view);
 app.get('/addEvents', addEvents.view);
+app.get('/manageEvents', manageEvents.view);
+app.get('/accountPage', accountPage.view); 
 // Example route
 // app.get('/users', user.list);
 

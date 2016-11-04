@@ -13,7 +13,10 @@ exports.view = function(req, res){
     var eventKey = eventSummary[0].toLowerCase();
     for(var j = 0; j < 3; j++){
       //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
-      clothes.push(JSON.parse('{ "itemDesc": "' + data["inventory"][eventKey][j] +'"}'));
+      console.log(data["inventory"][eventKey]);
+      if(data["inventory"][eventKey]){
+          clothes.push(JSON.parse('{ "itemDesc": "' + data["inventory"][eventKey][j] +'"}'));
+      }
     }
   }
   data['clothList'] = clothes;

@@ -1,4 +1,8 @@
-{
+{   "userInfo": {
+      "fname": "John",
+      "lname": "Doe",
+      "profileImg": "http://placehold.it/100/100"
+    },
     "inventory": {
         "bonfire": ["Shirt", "T Shirt", "Hoodie", "Flip Flops", "Flash Light", "Umbrella"],
         "beach": ["Shirt", "T Shirt", "Hoodie", "Flip Flops", "Flash Light", "Umbrella"],
@@ -9,5 +13,19 @@
         "dining": ["Dress Shirt", "Coat", "Dress Shoes"],
         "hiking": ["Hiking Boots", "Tennis Shoes", "Beanie", "Thermal", "Waterbottle", "Windbreaker", "Gloves", "T Shirt"]
     },
-    "eventList": []
+    "eventList": [{
+        "summary": "adsfdsafadsf",
+        "start": {
+            "date": "",
+            "time": ""
+        },
+        "description": ""
+    }, {
+        "summary": "Dinner with Gianne ",
+        "start": {
+            "date": "2016-11-04",
+            "time": "12:03"
+        },
+        "description": "adsf.jklsdflkjsadf;lksadjf"
+    }]
 }

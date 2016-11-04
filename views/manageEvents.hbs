@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Stylo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/main.css" rel="stylesheet">
+	<script src="https://use.fontawesome.com/9a7a508367.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+</head>
+<body>
+  <div class="page-container">
+    {{> navmenu}}
+    <div class="manage-events-container">
+      {{#each eventList}}
+        <div class="manage-events">
+          <div class="events__event-item">
+            <div class="event-item__date-title-container">
+              <p class="event-item__summary"><span>Title:</span> {{this.summary}}</p>
+              <p class="event-item__date">{{this.start.date}} @ {{this.start.time}}</p>
+            </div>
+            <p class="event-item__description">{{this.description}}</p>
+          </div>
+          <div class="manage-events__delete-edit">
+            <p class="delete-edit__edit"><i class="fa fa-pencil fa-2" aria-hidden="true"></i></p>
+            <p class="delete-edit__delete"><i class="fa fa-times fa-2" aria-hidden="true"></i></p>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+    <a href="/"><div class="manage-events-cancel-btn" class="cancel">Cancel</div></a>
+
+  </div>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/index.js" charset="utf-8"></script>
+</body>
+</html>
