@@ -106,16 +106,13 @@ app.post('/deleteEvent', function(req,res){
 app.get('/', index.view);
 app.get('/addEvents', addEvents.view);
 app.get('/manageEvents', manageEvents.view);
-app.get('/accountPage', accountPage.view);
-<<<<<<< HEAD
+app.get('/accountPage', accountPage.view
 app.get('/emailPage', emailPage.view);
 app.get('/login', login.view);
-app.get('/register', register.view)
-=======
+app.get('/register', register.view
 app.get('/settingPage', settingPage.view);
 app.get('/faqPage', faqPage.view);
 
->>>>>>> eb094833987454180656d960bf4e491c458637f1
 // Example route
 // app.get('/users', user.list);
 
