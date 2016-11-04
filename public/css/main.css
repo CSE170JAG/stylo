@@ -291,4 +291,24 @@ header {
   color: #fff;
   background: #9e3e47; }
 
+/*---------FAQ PAGE STYLING--------*/
+.faq h1 {
+  font-size: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
+
+.faq__qas {
+  list-style-type: none;
+  width: 95%; }
+
+.faq__qas-question {
+  font-size: 20px; }
+
+.faq_qas-answer {
+  font-size: 14px;
+  font-style: italic; }
+
 /*# sourceMappingURL=main.css.map */

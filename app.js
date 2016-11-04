@@ -17,6 +17,8 @@ var index = require('./routes/index');
 var addEvents = require('./routes/addEvents');
 var manageEvents = require('./routes/manageEvents');
 var accountPage = require('./routes/accountPage');
+var settingPage = require('./routes/settingPage');
+var faqPage = require('./routes/faqPage');
 
 var app = express();
 
@@ -83,7 +85,9 @@ app.post('/addEvent', function(req, res){
 app.get('/', index.view);
 app.get('/addEvents', addEvents.view);
 app.get('/manageEvents', manageEvents.view);
-app.get('/accountPage', accountPage.view); 
+app.get('/accountPage', accountPage.view);
+app.get('/settingPage', settingPage.view);
+app.get('/faqPage', faqPage.view);
 // Example route
 // app.get('/users', user.list);
 
