@@ -106,10 +106,10 @@ app.post('/deleteEvent', function(req,res){
 app.get('/', index.view);
 app.get('/addEvents', addEvents.view);
 app.get('/manageEvents', manageEvents.view);
-app.get('/accountPage', accountPage.view
+app.get('/accountPage', accountPage.view);
 app.get('/emailPage', emailPage.view);
 app.get('/login', login.view);
-app.get('/register', register.view
+app.get('/register', register.view);
 app.get('/settingPage', settingPage.view);
 app.get('/faqPage', faqPage.view);
 
