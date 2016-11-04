@@ -14,13 +14,30 @@
   <div class="page-container">
     {{> navmenu}}
 
-    <div class="user-info-container">
-      
-    </div>
+    <div class="faq">
+        <h1>
+            Frequently Asked Questions
+        </h1>
 
-    <p>{{fname}}</p>
-    <p>{{lname}}</p>
-    <img src={{profileImg}} alt="" />
+        <ul class="faq__qas">
+            <li class="faq__qas-question">
+                <b>Q: </b> What is Stylo?
+            </li>
+            <li class="faq__qas-answer">
+                <b>A: </b>Stylo is a day planner app and more!
+            </li>
+            
+            <br>
+            <br>
+
+            <li class="faq__qas-question">
+                <b>Q: </b> How do I add an event?
+            </li>
+            <li class="faq__qas-answer">
+                <b>A: </b>Simply click on the + button on the Home page to add an event.
+            </li>
+        </ul>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.min.js"></script>
