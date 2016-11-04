@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<style>
+</style>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./css/loginScreen.css" />
+	<style type="text/css"></style>
+	<link href="https://use.fontawesome.com/9a7a508367.css" media="all" rel="stylesheet">
+
+	<style>
+  *{
+	margin: 0;
+	padding: 0;
+}
+header {
+    height: 65px;
+    background: #00796B;
+    width: 100vw;
+    margin: 0;
+}
+
+
+form{
+	display: flex;
+	flex-direction: column;
+	margin-left: 2em;
+	margin-right: 2em;
+	margin-top: 2em;
+}
+
+.login-info_input{
+	display: block;
+	width: auto;
+	height: 2em;
+}
+
+.img{
+	height: 150px;
+	width: 150px;
+	padding-top: 1.5em;
+
+}
+
+input, button{
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	margin-top: 0.5em;
+}
+
+.login-info{
+
+}
+
+.page-container{
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+
+.wrapper{
+	position: absolute;
+	width: 100%;
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.button{
+
+}
+
+	</style>
+</head>
+		<body>
+			<div class="page-container">
+				<header>
+					<h1 class="header_title">Stylo</h1>
+				</header>
+
+				<!-- <center><img src="./images/styloLogo.jpg" class="img"></center> -->
+
+
+					<form>
+
+					Username: <br>
+					<input type="text" id="username" class="login-info_input"> <br>
+
+					Password: <br>
+					<input type="text" id="password" class="login-info_input"> <br>
+
+					</form>
+
+
+					<div class="wrapper">
+
+						<button type="button" class="button"id="tologin">Login</button>
+						<button type="button" class="button"id="toreg">New User? Register Here</button>
+
+					</div>
+
+			</div> <!-- end page-Container -->
+
+
+
+		</body>
+	<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+document.getElementById("tologin").onclick = function() {
+	document.location.href = "/";
+}
+
+
+document.getElementById("toreg").onclick = function() {
+	document.location.href = "register";
+}
+</script>
+
+</html

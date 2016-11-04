@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./css/register.css" />
+<style>
+header {
+    height: 65px;
+    background: #00796B;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    box-shadow: 0 -1px 10px #000;
+    color: white;
+}
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+	margin-left: 2em;
+	margin-right: 2em;
+	margin-top: 2em;
+}
+
+
+.reg-info__form__input{
+	display: block;
+	width: auto;
+	height: 2em;
+}
+
+input, button{
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	margin-top: 0.5em;
+}
+
+.reg-Button{
+	width: auto;
+	height: 4.5em;
+	border-radius: 25px;
+	background-color: #00a897;
+	color: white;
+
+}
+
+.back-Button{
+	width: 30%;
+	height: 3.5em;
+	margin-top: 1.5em;
+	border-radius: 25px;
+	font-size: 0.75em;
+	background-color: #00796B;
+	color: white;
+}
+</style>
+    </head>
+
+    <body>
+        <div class="page-container">
+            <header>
+                <h1 class="header__title">Stylo</h1>
+                <div class="header__menu-toggle">
+                    <span class="menu-toggle__divider"></span>
+                    <span class="menu-toggle__divider"></span>
+                    <span class="menu-toggle__divider"></span>
+                </div>
+            </header>
+
+            <div class="reg-info">
+                    <form class="reg-info__form" action="" method="">
+                            First Name: <br>
+                            <input type="text" name="eventtitle" class="reg-info__form__input"> <br>
+
+                            Last Name: <br>
+                            <input type="text" name="description" class="reg-info__form__input"> <br>
+
+                            Username: <br>
+                            <input type="text" name="date" class="reg-info__form__input"> <br>
+
+                            Password: <br>
+                            <input type="text" name="time" class="reg-info__form__input"> <br>
+
+
+                            <button type="button" id="reg" class="reg-Button">Register</button>
+
+                            <button type="button" id="back" class="back-Button">Back</button>
+
+
+                    </form>
+            </div>
+
+
+
+
+
+        </div> <!--end page-container -->
+    </body>
+    	<script src="js/bootstrap.min.js"></script>
+<!-- button functions -->
+			 <script type="text/javascript">
+			document.getElementById("reg").onclick = function() {
+				document.location.href = "/";
+			}
+
+
+			document.getElementById("back").onclick = function() {
+				document.location.href = "login";
+			}
+			</script>
+<!-- end of button functions -->
+</html>
