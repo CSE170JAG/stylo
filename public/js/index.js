@@ -58,7 +58,7 @@ function initializePage() {
 
 	$(".delete-edit__delete").on('click', function(){
 			var eventObj = ($(this).parent()).siblings()[0].children[0].children[0].innerText;
-			var eventTitle = eventObj.split(":")[1]
+			var eventTitle = eventObj.split(":")[1];
 			var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
 			if(deleteConfirm){
 				var postData = {
@@ -71,5 +71,28 @@ function initializePage() {
 				})
 			}
 	});
+
+	$(".delete-edit__edit").on('click', function(){
+			//var eventObj = ($(this).parent()).siblings()[0].children[0].children[0].innerText;
+
+			/* Get all event data and put into variables, remove white space */
+			var eventObj = ($(this).parent()).siblings()[0].innerText;
+			var eventTitle = ( ($(this).parent()).siblings()[0].children[0].children[0].innerText ).split(":")[1].trim();
+			var eventDateAndTime = ($(this).parent()).siblings()[0].children[0].children[1].innerText;
+			var eventDate = eventDateAndTime.split("@")[0].trim();
+			var eventTime = eventDateAndTime.split("@")[1].trim();
+
+
+			console.log( "This is the event: " + eventTitle );
+			var sendData = {
+				"oldTitle": eventTitle,
+			}
+
+			$.post('/editEvent', sendData, function(res){
+				//document.location.href = '/editEvent';
+				//console.log(res)
+			});
+
+	}); //end delete-edit__edit onClick
 
 }
