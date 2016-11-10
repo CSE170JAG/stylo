@@ -51,7 +51,50 @@ function initializePage() {
 				data: sendData,
 				complete: function(){ document.location.href = '/'; }
 			}
-	 );
+	 	);
+	});
+
+	$("#edit-btn").on('click', function(){
+		var editConfirm = confirm("Are you sure you want to edit this event?");
+		if( editConfirm ){
+
+			//Enter new event first
+			var sendData = {
+				"summary": $('#event-title-input').val(),
+				"start": {
+					"date": $('#event-date-input').val(),
+					"time": $('#event-time-input').val()
+				},
+				"description": $('#event-desc-input').val()
+			}
+
+			console.log("Clicked");
+			$.ajax(
+				{
+					type: "POST",
+					url: "/addEvent",
+					crossDomain:true,
+					dataType: "json",
+					data: sendData,
+				}
+			);
+
+			//delete the old event
+			var currURL = document.URL; //get the title of the event through the url coz they might've changed it
+			console.log( "Current URL is " + currURL);
+
+			var currEvent = currURL.split("editEvent/")[1];
+			console.log( "Current Event is " + currEvent);
+
+			var postData = {
+				toDelete: currEvent
+			}
+
+			$.post('/deleteEvent', postData, function(res){
+				document.location.href = '/manageEvents';
+				console.log(res)
+			})
+		}
 	});
 
 
@@ -71,28 +114,5 @@ function initializePage() {
 				})
 			}
 	});
-
-	$(".delete-edit__edit").on('click', function(){
-			//var eventObj = ($(this).parent()).siblings()[0].children[0].children[0].innerText;
-
-			/* Get all event data and put into variables, remove white space */
-			var eventObj = ($(this).parent()).siblings()[0].innerText;
-			var eventTitle = ( ($(this).parent()).siblings()[0].children[0].children[0].innerText ).split(":")[1].trim();
-			var eventDateAndTime = ($(this).parent()).siblings()[0].children[0].children[1].innerText;
-			var eventDate = eventDateAndTime.split("@")[0].trim();
-			var eventTime = eventDateAndTime.split("@")[1].trim();
-
-
-			console.log( "This is the event: " + eventTitle );
-			var sendData = {
-				"oldTitle": eventTitle,
-			}
-
-			$.post('/editEvent', sendData, function(res){
-				//document.location.href = '/editEvent';
-				//console.log(res)
-			});
-
-	}); //end delete-edit__edit onClick
 
 }

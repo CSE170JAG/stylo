@@ -16,15 +16,15 @@
     {{> navmenu}}
 
     <form id="event-form">
-      <label>Event Title <br><input id="event-title-input" type="text" value={{temp}}></label>
-      <label>Event Date <br><input id="event-date-input" type="date" value={{editedDate}}></label>
-      <label>Event Time <br><input id="event-time-input" type="time" value={{editedTime}}></label>
-      <label>Event Description <br><textarea id="event-desc-input" type="text" value={{editedDescription}}></textarea></label>
+      <label>Event Title <br><input id="event-title-input" type="text" value={{sendTitle}}></label>
+      <label>Event Date <br><input id="event-date-input" type="date" value={{sendDate}}></label>
+      <label>Event Time <br><input id="event-time-input" type="time" value={{sendTime}}></label>
+      <label>Event Description <br><textarea id="event-desc-input" type="text">{{sendDescription}}</textarea></label>
     </form>
 
     <div class="cancel-submit-container">
-      <a href="/"><button id="cancel-btn" type="button" name="button">Cancel</button></a>
-      <button id="submit-btn" type="button" name="button">Edit Event</button>
+      <a href="/manageEvents"><button id="cancel-btn" type="button" name="button">Cancel</button></a>
+      <button id="edit-btn" type="button" name="button">Edit Event</button>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery.js"></script>
