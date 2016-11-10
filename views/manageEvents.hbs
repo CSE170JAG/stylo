@@ -14,24 +14,32 @@
   <div class="page-container">
     {{> navmenu}}
     <div class="manage-events-container">
+      <div class="manage-events-container__title">All Events</div>
       {{#each eventList}}
-        <div class="manage-events">
-          <div class="events__event-item">
-            <div class="event-item__date-title-container">
-              <p class="event-item__summary"><span>Title:</span> {{this.summary}}</p>
-              <p class="event-item__date">{{this.start.date}} @ {{this.start.time}}</p>
-            </div>
-            <p class="event-item__description">{{this.description}}</p>
+        <div class="events__event-item">
+          <div class="event-item__date-title-container">
+            <p class="event-item__summary"><span>Title:</span>  {{this.summary}}</p>
+            <p class="event-item__date"><span>Title:</span>  {{this.start.date}}</p>
+            <p class="event-item__time"><span>Time:</span>  {{this.start.time}}</p>
           </div>
-          <div class="manage-events__delete-edit">
-            <p class="delete-edit__edit"><i class="fa fa-pencil fa-2" aria-hidden="true"></i></p>
-            <p class="delete-edit__delete"><i class="fa fa-times fa-2" aria-hidden="true"></i></p>
+          <p class="event-item__description">{{this.description}}</p>
+
+          <div class="event-item-edit-delete">
+            <div class="event-item-edit-delete__edit">
+              <i class="fa fa-pencil" aria-hidden="true"></i> Edit Event
+            </div>
+            <div class="event-item-edit-delete__delete">
+              <i class="fa fa-trash-o" aria-hidden="true"></i> Delete Event
+            </div>
           </div>
         </div>
       {{/each}}
     </div>
 
-    <a href="/"><div class="manage-events-cancel-btn" class="cancel">Cancel</div></a>
+    <div class="back-finish-container">
+      <a href="/"><div class="back-finish-container__back">Back</div></a>
+      <a href="/"><div class="back-finish-container__finish">Finished</div></a>
+    </div>
 
   </div>
   <script src="https://code.jquery.com/jquery.js"></script>

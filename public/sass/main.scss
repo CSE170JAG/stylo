@@ -4,6 +4,9 @@ $text-icon-color: #fff;
 $text-primary-color: #000;
 $menu-color: #fff;
 $accent-color: #607D8B;
+
+$navbar-height: 65px;
+$footer-nav-height: 40px;
 *{
 
 }
@@ -125,121 +128,111 @@ header{
   border-right: thin solid #ccc;
 }
 
+/*-----------STYLING FOR CLOTHING & EVENTS----------*/
+.footer-navigation{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: $footer-nav-height;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  border-top: thin solid #ccc;
+}
+.footer-navigation__clothes,.footer-navigation__event-list{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: $footer-nav-height;
+  font-size: 24px;
+
+  &.active{
+    background: $dark-primary-color;
+    color: white;
+  }
+}
+
+.cloth-events-container{
+  height: calc(100vh - 65px - 40px);
+  overflow: scroll;
+  background: #fcfcfc;
+  text-align: center;
+}
+.cloth-event-container__title{
+  font-weight: 500;
+  font-size: 24px;
+  padding-bottom: 3px;
+  margin: 10px 0;
+}
+.clothes-list, .events{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clothes-list__cloth-item, .events__event-item{
+  background: #fff;
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  border: thin solid #ccc;
+  box-shadow: 0px 2px 10px #e4e4e4;
+}
+
+.cloth-item__description{
+  word-break: break-all;
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+/*-------------------CLOTHES LIST STYLING--------------------*/
 
 .add-event-btn{
   border-radius: 100%;
-  width: 70px;
-  height: 70px;
+  width: 55px;
+  height: 55px;
   background-color: $dark-primary-color;
   position: absolute;
-  bottom: 40px;
-  right: 30px;
+  bottom: 70px;
+  right: 25px;
   text-align: center;
   color: white;
-  font-size: 60px;
+  font-size: 45px;
   line-height: 1;
   box-shadow: 1px 2px 10px #000;
   text-shadow: 1px 1px 3px #000;
 }
 
-/*-----------STYLING FOR CALENDAR & EVENTS----------*/
-
-.calendar-container{
-  height: 300px;
-}
-.calendar-container__toggle{
-  height: 45px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  .active{
-    border-bottom: 5px solid $accent-color;
-  }
-}
-
-.toggle__calendar,.toggle__events{
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 45px;
-  width: 100%;
-  height: 100%;
-}
-
-.calendar-container .calendar,.calendar-container .events{
-  width: 100%;
-  height: calc(100% - 45px);
-}
-.calendar-container .calendar{
-  background: #bababa;
-}
-.calendar-container .events{
-  display: none;
-  overflow: scroll;
-}
-
 .events__event-item{
-  border: thin solid #ccc;
-  padding: 20px;
+  display: block;
+  text-align: left;
+}
+.event-item__summary{
+  font-size: 18px;
+  margin-bottom: 5px;
+  border-bottom: thin solid #ccc;
+  padding-bottom: 2px;
 }
 .event-item__date-title-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-size: 18px;
+  & span{
+    font-weight: 500;
+  }
+  .event-item__date, .event-item__time{
+    font-size: 16px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
 }
-.event-item__date{
-  border-bottom: thin solid #ccc;
-}
+
 .event-item__description{
+  border-top: thin solid #ccc;
+  padding-top: 10px;
+  word-break: break-all;
   font-size: 16px;
 }
-
-.no-events-conatiner{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background: #CFD8DC;
-}
-.no-events-smiley{
-  font-size: 35px;
-  font-weight: 500;
-}
-.no-envents-message{
-  font-size: 18px;
-}
-
-/*-------------------CLOTHES LIST STYLING--------------------*/
-.clothes-list{
-  //calculate the height based on the height of header and calendar container
-  height: calc(100vh - (300px + 65px ));
-  overflow: scroll;
-  border-top: 2px solid #ccc;
-}
-.clothes-list__cloth-item{
-  img,p{
-    display: block;
-  }
-  img{
-    width: 100px;
-    height: 100px;
-  }
-  p{
-    margin-left: 20px;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  display: flex;
-  justify-content: flex-start;
-  padding: 20px;
-  align-items: center;
-  border-bottom: thin solid #ccc;
-  width: 100vw;
-}
-
 /*---------ADD EVENT PAGE STYLING--------*/
 #event-form{
   label{
@@ -282,51 +275,69 @@ header{
   background: $accent-color;
 }
 
-.manage-events-container{
-  height: calc(90vh - 65px);
-  overflow: scroll;
+/*----------MANAGE EVENTS CONTAINER---------------*/
+.back-finish-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  bottom: 40px;
 }
-.manage-events-cancel-btn{
+.back-finish-container__back,.back-finish-container__finish{
   color: #fff;
   font-size: 18px;
-  background: $dark-primary-color;
   border: none;
   padding: 10px 5px;
   border-radius: 5px;
   width: 100px;
   box-shadow: 0px 1px 5px #000;
-}
-.manage-events{
-  display: flex;
-  border: thin solid #ccc;
-  margin: 5px 0;
-  .events__event-item{
-    margin: 2px 0;
-    width: 100%;
-    border: none;
-    border-right: thin solid #ccc;
-  }
-}
-
-.manage-events__delete-edit{
-  width: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.delete-edit__edit, .delete-edit__delete{
-  width: 100%;
-  margin: 0;
   text-align: center;
 }
-.delete-edit__edit{
-  background: $light-primary-color;
+
+.back-finish-container__back{
+  background-color: $accent-color;
 }
-.delete-edit__delete{
-  color: #fff;
-  background: #9e3e47;
+.back-finish-container__finish{
+  background-color: $dark-primary-color;
+}
+.manage-events-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 65px);
+  overflow: scroll;
+  padding-bottom: 300px;
+}
+.manage-events-container__title{
+  font-weight: 500;
+  font-size: 24px;
+  padding-bottom: 3px;
+  margin: 10px 0;
 }
 
+.event-item-edit-delete{
+  display: flex;
+  justify-content: space-around;
+}
+
+.event-item-edit-delete__edit,.event-item-edit-delete__delete{
+  height: 40px;
+  width: 140px;
+  border-radius: 8px;
+  margin-top: 30px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+}
+.event-item-edit-delete__edit{
+  background: $light-primary-color;
+  color: #000;
+}
+.event-item-edit-delete__delete{
+  background-color: #cf4831;
+}
 /*---------FAQ PAGE STYLING--------*/
 .faq {
 

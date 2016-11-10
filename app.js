@@ -9,8 +9,6 @@ var path = require('path');
 var hbs = require('express-hbs');
 var fs = require('fs');
 
-var Forecast = require('forecast');
-
 // Example route
 // var user = require('./routes/user');
 var index = require('./routes/index');
@@ -44,28 +42,6 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-// // Initialize
-// var forecast = new Forecast({
-//   service: 'darksky',
-//   key: '4996cab08400f882874b1f26572f8172',
-//   units: 'celcius',
-//   cache: true,      // Cache API requests
-//   ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
-//     minutes: 27,
-//     seconds: 45
-//   }
-// });
-//
-// function getWeather(){
-//   // Retrieve weather information from coordinates (Sydney, Australia)
-//   forecast.get([-33.8683, 151.2086], function(err, weather) {
-//     if(err) return console.dir(err);
-//     return(weather);
-//   });
-// }
-
-
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
@@ -81,7 +57,6 @@ app.post('/addEvent', function(req, res){
   data.eventList.push(req.body)
 
   fs.writeFileSync('data.json', JSON.stringify(data));
-  console.log("Updated Data");
   res.header("Access-Control-Allow-Origin", "*");
   res.send("OK");
 });
