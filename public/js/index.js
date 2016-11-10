@@ -86,6 +86,10 @@ function initializePage() {
 			var currEvent = currURL.split("editEvent/")[1];
 			console.log( "Current Event is " + currEvent);
 
+			currEvent = currEvent.replace( /%20/g, " "); //remove handlebar replacements for URL spaces
+			console.log( "Current Event is  actually " + currEvent);
+
+
 			var postData = {
 				toDelete: currEvent
 			}
@@ -93,6 +97,7 @@ function initializePage() {
 			$.post('/deleteEvent', postData, function(res){
 				document.location.href = '/manageEvents';
 				console.log(res)
+				console.log( "EVENT DELETED")
 			})
 		}
 	});
@@ -102,6 +107,7 @@ function initializePage() {
 	$(".delete-edit__delete").on('click', function(){
 			var eventObj = ($(this).parent()).siblings()[0].children[0].children[0].innerText;
 			var eventTitle = eventObj.split(":")[1];
+			console.log( "Event to deletee " + eventTitle);
 			var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
 			if(deleteConfirm){
 				var postData = {
