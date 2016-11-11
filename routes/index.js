@@ -2,8 +2,28 @@
 /*
  * GET home page.
  */
- //Google Calendar API
+
 var fs = require('fs');
+var Forecast = require('forecast');
+
+var fcData;
+var forecast = new Forecast({
+  service: 'darksky',
+  key: '4996cab08400f882874b1f26572f8172',
+  units: 'fahrenheit',
+  cache: true,      // Cache API requests
+  ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
+    minutes: 27,
+    seconds: 45
+  }
+});
+
+// Retrieve weather information, ignoring the cache
+forecast.get([32.7157, 117.1611], true, function(err, weather) {
+  if(err) return console.dir(err);
+  fcData = weather;
+});
+
 exports.view = function(req, res){
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
   var clothes = [];
@@ -13,12 +33,12 @@ exports.view = function(req, res){
     var eventKey = eventSummary[0].toLowerCase();
     for(var j = 0; j < 3; j++){
       //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
-      console.log(data["inventory"][eventKey]);
       if(data["inventory"][eventKey]){
           clothes.push(JSON.parse('{ "itemDesc": "' + data["inventory"][eventKey][j] +'"}'));
       }
     }
   }
   data['clothList'] = clothes;
-  res.render('index', data );
+  data['weather'] = fcData;
+  res.render('index', data);
 };

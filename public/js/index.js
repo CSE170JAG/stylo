@@ -16,19 +16,18 @@ function initializePage() {
 		$(".menu-container").addClass('close', 1000);
 	});
 
-	$(".toggle__calendar").on('click', function(){
-			$(".toggle__events").removeClass('active');
-			$(this).addClass('active');
-			$('.calendar-container .calendar').show();
-			$('.calendar-container .events').hide();
+	$(".footer-navigation__clothes").on('click', function(){
+		 $(".footer-navigation__event-list").removeClass('active');
+		 $(".cloth-events-container__events").hide();
+		 $(this).addClass('active');
+		 $(".cloth-events-container__clothes").show();
 	});
-	$(".toggle__events").on('click', function(){
-			$(".toggle__calendar").removeClass('active');
+	$(".footer-navigation__event-list").on('click', function(){
+			$(".footer-navigation__clothes").removeClass('active');
+			 $(".cloth-events-container__clothes").hide();
 			$(this).addClass('active');
-			$('.calendar-container .events').show();
-			$('.calendar-container .calendar').hide();
+			$(".cloth-events-container__events").show();
 	});
-
 	// https://styloappstag.herokuapp.com/test
 	//http://localhost:3000/test
 	$("#submit-btn").on('click', function(){
@@ -51,12 +50,63 @@ function initializePage() {
 				data: sendData,
 				complete: function(){ document.location.href = '/'; }
 			}
-	 );
+	 	);
 	});
 
-	$(".delete-edit__delete").on('click', function(){
+
+	$("#edit-btn").on('click', function(){
+	 		var editConfirm = confirm("Are you sure you want to edit this event?");
+	 		if( editConfirm ){
+
+	 			//Enter new event first
+	 			var sendData = {
+	 				"summary": $('#event-title-input').val(),
+	 				"start": {
+	 					"date": $('#event-date-input').val(),
+	 					"time": $('#event-time-input').val()
+	 				},
+	 				"description": $('#event-desc-input').val()
+	 			}
+
+	 			console.log("Clicked");
+	 			$.ajax(
+	 				{
+	 					type: "POST",
+	 					url: "/addEvent",
+	 					crossDomain:true,
+	 					dataType: "json",
+	 					data: sendData,
+	 				}
+	 			);
+
+	 			//delete the old event
+	 			var currURL = document.URL; //get the title of the event through the url coz they might've changed it
+	 			console.log( "Current URL is " + currURL);
+
+	 			var currEvent = currURL.split("editEvent/")[1];
+	 			console.log( "Current Event is " + currEvent);
+
+	 			currEvent = currEvent.replace( /%20/g, " "); //remove handlebar replacements for URL spaces
+	 			console.log( "Current Event is  actually " + currEvent);
+
+
+	 			var postData = {
+	 				toDelete: currEvent
+	 			}
+
+	 			$.post('/deleteEvent', postData, function(res){
+	 				document.location.href = '/manageEvents';
+	 				console.log(res)
+	 				console.log( "EVENT DELETED")
+	 			})
+	 		}
+  	});
+
+
+	$(".event-item-edit-delete__delete").on('click', function(){
 			var eventObj = ($(this).parent()).siblings()[0].children[0].children[0].innerText;
-			var eventTitle = eventObj.split(":")[1]
+			var eventTitle = eventObj.split(":")[1];
+			console.log( "Event to deletee " + eventTitle);
 			var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
 			if(deleteConfirm){
 				var postData = {
@@ -95,7 +145,7 @@ function initializePage() {
 					data: sendData,
 					complete: function(){
             console.log("PLease redir");
-						document.location.href = '/'; 
+						document.location.href = '/';
 					}
 				}
 			);

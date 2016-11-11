@@ -1,16 +1,22 @@
 <div class="events">
   {{#each eventList}}
-    <div class="events__event-item">
-      <div class="event-item__date-title-container">
-        <p class="event-item__summary"><span>Title:</span> {{this.summary}}</p>
-        <p class="event-item__date">{{this.start.date}} @ {{this.start.time}}</p>
+      <div class="events__event-item">
+        <a href="/editEvent/{{this.summary}}" style="display:block">
+          <div class="event-item__date-title-container">
+            <p class="event-item__summary"><span>Title:</span>  {{this.summary}}</p>
+            <p class="event-item__date"><span>Title:</span>  {{this.start.date}}</p>
+            <p class="event-item__time"><span>Time:</span>  {{this.start.time}}</p>
+          </div>
+          <p class="event-item__description">{{this.description}}</p>
+        </a>
       </div>
-      <p class="event-item__description">{{this.description}}</p>
-    </div>
   {{else}}
     <div class="no-events-conatiner">
       <p class="no-events-smiley">:]</p>
       <p class="no-envents-message">Looks like you don't have any events.</p>
     </div>
   {{/each}}
+
+  <a href="/addEvents"><div class="add-event-btn">&plus;</div></a>
+
 </div>
