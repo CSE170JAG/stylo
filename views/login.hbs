@@ -85,8 +85,8 @@
 		<form>
 
 			Username: <br>
-			<input type="text" id="username" class="login-info_input"> <br> Password: <br>
-			<input type="text" id="password" class="login-info_input"> <br>
+			<input type="text" id="login-username" class="login-info_input"> <br> Password: <br>
+			<input type="password" id="login-password" class="login-info_input"> <br>
 
 		</form>
 
@@ -94,7 +94,7 @@
 		<div class="wrapper">
 
 			<button type="button" class="button" id="tologin">Login</button>
-			<button type="button" class="button" id="toreg">New User? Register Here</button>
+			<a href="/register"><button type="button" class="button" id="toreg">New User? Register Here</button></a>
 
 		</div>
 
@@ -106,15 +106,5 @@
 </body>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	document.getElementById("tologin").onclick = function() {
-		document.location.href = "/";
-	}
-
-
-	document.getElementById("toreg").onclick = function() {
-		document.location.href = "register";
-	}
-</script>
-
+<script src="/js/index.js" charset="utf-8"></script>
 </html

@@ -81,6 +81,24 @@ app.post('/deleteEvent', function(req,res){
   res.send(deleteData.userId);
 });
 
+app.post('/confirmLogin', function(req, res){
+  var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+  res.header("Access-Control-Allow-Origin", "*");
+
+  var loginObj = req.body;
+  var registerList = data['regList'];
+
+  if( registerList.hasOwnProperty(loginObj.uN) ){
+    if( registerList[loginObj.uN] === loginObj.uP){
+      res.send(loginObj.uN);
+    }else{
+      res.send("false");
+    }
+  }else{
+    res.send("false");
+  }
+});
+
 
 app.post('/register', function(req, res){
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
@@ -126,7 +144,7 @@ app.post('/updateEvent', function(req, res){
 
 });
 
-
+app.get('/', login.view);
 app.get('/loggedin/:userId', index.view);
 app.get('/addEvents/:userId', addEvents.view);
 app.get('/manageEvents/:userId', manageEvents.view);

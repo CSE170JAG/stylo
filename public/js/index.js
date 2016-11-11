@@ -9,6 +9,27 @@ $(document).ready(function() {
  * Function that is called when the document is ready.
  */
 function initializePage() {
+
+	//Login Functionality
+	$("#tologin").on('click', function(){
+		var usrName = $('#login-username').val().trim();
+		var usrPass = $('#login-password').val().trim();
+
+		var loginData = {
+			uN: usrName,
+			uP: usrPass
+		}
+
+		$.post('/confirmLogin', loginData, function(res){
+				if(res === 'false'){
+					alert("An incorrect username/password has been entered. Please try again.");
+				}else{
+					document.location.href = '/loggedin/'+res;
+				}
+		});
+	});
+
+
 	$(".header__hamburger-menu").on('click', function(){
 		 $(".menu-container").removeClass('close', 1000);
 	});
