@@ -1,5 +1,6 @@
 <div class="events">
   {{#each eventList}}
+  <a href="/editEvent/{{this.summary}}">
     <div class="events__event-item">
       <div class="event-item__date-title-container">
         <p class="event-item__summary"><span>Title:</span> {{this.summary}}</p>
@@ -7,6 +8,7 @@
       </div>
       <p class="event-item__description">{{this.description}}</p>
     </div>
+  </a>
   {{else}}
     <div class="no-events-conatiner">
       <p class="no-events-smiley">:]</p>
