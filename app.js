@@ -20,7 +20,7 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 var settingPage = require('./routes/settingPage');
 var faqPage = require('./routes/faqPage');
-
+var editEvent = require( './routes/editEvent');
 
 var app = express();
 
@@ -69,6 +69,7 @@ app.post('/deleteEvent', function(req,res){
 
     if(eventObj["summary"].trim() === (req.body)["toDelete"].trim()){
       updatedEvents.splice(j,1);
+      break;
     }
   }
   data.eventList = updatedEvents;
@@ -87,6 +88,7 @@ app.get('/login', login.view);
 app.get('/register', register.view);
 app.get('/settingPage', settingPage.view);
 app.get('/faqPage', faqPage.view);
+app.get('/editEvent/:eventTitle', editEvent.view);
 
 // Example route
 // app.get('/users', user.list);
