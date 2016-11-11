@@ -91,8 +91,6 @@ app.get('/settingPage', settingPage.view);
 app.get('/faqPage', faqPage.view);
 app.get('/editEvent/:eventTitle', editEvent.view);
 
-app.get('/editEvent/:eventTitle', editEvent.view);
-
 // Example route
 // app.get('/users', user.list);
 
