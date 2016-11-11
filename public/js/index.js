@@ -143,8 +143,8 @@ function initializePage() {
 					crossDomain:true,
 					dataType: "json",
 					data: sendData,
-					complete: function(){
-            console.log("PLease redir");
+					complete: function(res){
+            console.log(res.responseText);
 						document.location.href = '/';
 					}
 				}

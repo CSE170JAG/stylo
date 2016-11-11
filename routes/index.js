@@ -28,6 +28,7 @@ exports.view = function(req, res){
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
   var clothes = [];
   var events = data["eventList"];
+  console.log(events);
   for(var i = 0; i < events.length; i++){
     var eventSummary = (events[i]["summary"]).split(" ");
     var eventKey = eventSummary[0].toLowerCase();

@@ -82,12 +82,25 @@ app.post('/deleteEvent', function(req,res){
 
 app.post('/register', function(req, res){
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
-  data.regList.push(req.body)
+
+  var userData = req.body;
+  data.regList[userData.uN] = userData.pass;
+
+  data[userData.uN] = {
+    userInfo: {
+      username: userData.uN,
+      fname: userData.fN,
+      lname: userData.lN,
+      upass: userData.pass,
+      profileImg: "http://placehold.it/100/100"
+    },
+    eventList: []
+  }
 
   fs.writeFileSync('data.json', JSON.stringify(data));
   console.log("Updated Data");
   res.header("Access-Control-Allow-Origin", "*");
-  res.send("OK");
+  res.send(userData.uN);
 });
 
 
