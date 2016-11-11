@@ -1,12 +1,17 @@
 {
     "regList": {
-        "Kguy19": "whataremygrades"
+        "Kguy19": "whataremygrades",
+        "ffPW": "password",
+        "mjack": "children",
+        "poop": "ddasfsadf",
+        "bman": "asfdasdf"
     },
     "userInfo": {
         "fname": "John",
         "lname": "Doe",
         "profileImg": "http://placehold.it/100/100"
     },
+    "eventList": [],
     "inventory": {
         "bonfire": ["Shirt", "T Shirt", "Hoodie", "Flip Flops", "Flash Light", "Umbrella"],
         "beach": ["Shirt", "T Shirt", "Hoodie", "Flip Flops", "Flash Light", "Umbrella"],
@@ -26,5 +31,80 @@
             "profileImg": "http://placehold.it/100/100"
         },
         "eventList": []
+    },
+    "ffPW": {
+        "userInfo": {
+            "username": "ffPW",
+            "fname": "Paul",
+            "lname": "Walker",
+            "upass": "password",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": []
+    },
+    "mjack": {
+        "userInfo": {
+            "username": "mjack",
+            "fname": "Micheal ",
+            "lname": "Jackson ",
+            "upass": "children",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": []
+    },
+    "poop": {
+        "userInfo": {
+            "username": "poop",
+            "fname": "Afdsafdsfasd",
+            "lname": "asdfl",
+            "upass": "ddasfsadf",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": []
+    },
+    "bman": {
+        "userInfo": {
+            "username": "bman",
+            "fname": "batman",
+            "lname": "wayne ",
+            "upass": "asfdasdf",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": [{
+            "summary": "Dinner",
+            "start": {
+                "date": "1312-12-31",
+                "time": "00:32"
+            },
+            "description": "Hellow Mamasmdfa"
+        }, {
+            "summary": "Hiking",
+            "start": {
+                "date": "1312-12-08",
+                "time": "00:32"
+            },
+            "description": "Hiking! :]"
+        }, {
+            "summary": "Bonfire",
+            "start": {
+                "date": "1312-12-08",
+                "time": "00:32"
+            },
+            "description": "Bonfierwas"
+        }, {
+            "summary": "Popopop",
+            "start": {
+                "date": "1312-12-08",
+                "time": "00:32"
+            },
+            "description": "apodsf"
+        }, {
+            "summary": "aadspfoadsf",
+            "start": {
+                "date": "0123-02-13",
+                "time": "12:33"
+            },
+            "description": "adsfasdf"
+        }]
     }
 }

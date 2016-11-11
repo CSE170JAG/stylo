@@ -25,10 +25,11 @@ forecast.get([32.7157, 117.1611], true, function(err, weather) {
 });
 
 exports.view = function(req, res){
+  console.log(req.session);
+  var userId = req.params.userId; 
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
   var clothes = [];
-  var events = data["eventList"];
-  console.log(events);
+  var events = data[userId]["eventList"];
   for(var i = 0; i < events.length; i++){
     var eventSummary = (events[i]["summary"]).split(" ");
     var eventKey = eventSummary[0].toLowerCase();
@@ -39,7 +40,7 @@ exports.view = function(req, res){
       }
     }
   }
-  data['clothList'] = clothes;
-  data['weather'] = fcData;
-  res.render('index', data);
+  data[userId]['clothList'] = clothes;
+  data[userId]['weather'] = fcData;
+  res.render('index', data[userId]);
 };

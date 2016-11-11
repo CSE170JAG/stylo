@@ -48,18 +48,20 @@ if ('development' == app.get('env')) {
 }
 // Add routes here
 //app.get('/', index.view);
-
 app.post('/', function (req, res) {
   res.send(JSON.parse(fs.readFileSync('data.json', 'utf8')));
 });
+
 app.post('/addEvent', function(req, res){
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
-  data.eventList.push(req.body)
+  var addData = req.body;
+  data[addData.userId].eventList.push(addData.event);
 
   fs.writeFileSync('data.json', JSON.stringify(data));
   res.header("Access-Control-Allow-Origin", "*");
-  res.send("OK");
+  res.send(addData.userId);
 });
+
 app.post('/deleteEvent', function(req,res){
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
   console.log(data.eventList)
@@ -104,10 +106,10 @@ app.post('/register', function(req, res){
 });
 
 
-app.get('/', index.view);
-app.get('/addEvents', addEvents.view);
-app.get('/manageEvents', manageEvents.view);
-app.get('/accountPage', accountPage.view);
+app.get('/loggedin/:userId', index.view);
+app.get('/addEvents/:userId', addEvents.view);
+app.get('/manageEvents/:userId', manageEvents.view);
+app.get('/accountPage/:userId', accountPage.view);
 app.get('/emailPage', emailPage.view);
 app.get('/login', login.view);
 app.get('/register', register.view);

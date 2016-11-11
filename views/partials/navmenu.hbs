@@ -1,6 +1,6 @@
 <header>
   <h1 class="header__site-name">
-    <a href="/">Stylo</a>
+    <a href="/loggedin/{{userInfo.username}}">Stylo</a>
   </h1>
   <div class="header__hamburger-menu">
     <span class="hamburger-menu__line"></span>
@@ -14,10 +14,10 @@
     <span class="drawer-menu__close-btn">&times;</span>
 
     <ul class="drawer-menu__list">
-      <a href="/accountPage">
+      <a href="/accountPage/{{userInfo.username}}">
         <li><i class="fa fa-user" aria-hidden="true"></i>Account</li>
       </a>
-      <a href="/manageEvents">
+      <a href="/manageEvents/{{userInfo.username}}">
         <li><i class="fa fa-calendar" aria-hidden="true"></i>Manage Events</li>
       </a>
       <a href="/settingPage" style="display: none;">

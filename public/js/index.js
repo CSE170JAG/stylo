@@ -31,8 +31,8 @@ function initializePage() {
 	// https://styloappstag.herokuapp.com/test
 	//http://localhost:3000/test
 	$("#submit-btn").on('click', function(){
-
-		var sendData = {
+		var locationId = document.location.href.split('addEvents/')[1];
+		var newEvent = {
 			"summary": $('#event-title-input').val(),
 			"start": {
 				"date": $('#event-date-input').val(),
@@ -40,6 +40,12 @@ function initializePage() {
 			},
 			"description": $('#event-desc-input').val()
 		}
+
+		var sendData = {
+			userId: locationId,
+			event: newEvent
+		}
+
 		console.log("Clicked");
 		$.ajax(
 			{
@@ -48,11 +54,15 @@ function initializePage() {
 				crossDomain:true,
 				dataType: "json",
 				data: sendData,
-				complete: function(){ document.location.href = '/'; }
+				complete: function(res){ document.location.href = '/loggedin/'+res.responseText; }
 			}
 	 	);
 	});
 
+	$(".cancel-submit-container #cancel-btn").on('click', function(){
+		var locationId = document.location.href.split('addEvents/')[1];
+		document.location.href = '/loggedin/'+locationId; 
+	});
 
 	$("#edit-btn").on('click', function(){
 	 		var editConfirm = confirm("Are you sure you want to edit this event?");
@@ -145,7 +155,8 @@ function initializePage() {
 					data: sendData,
 					complete: function(res){
             console.log(res.responseText);
-						document.location.href = '/';
+						// sessionStorage.setItem('userId', res.responseText);
+						document.location.href = '/loggedin/'+res.responseText;
 					}
 				}
 			);
