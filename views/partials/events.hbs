@@ -1,7 +1,7 @@
 <div class="events">
   {{#each eventList}}
       <div class="events__event-item">
-        <a href="/editEvent/{{this.summary}}" style="display:block">
+        <a href="/editEvent/{{this.summary}}/{{../userInfo.username}}" style="display:block">
           <div class="event-item__date-title-container">
             <p class="event-item__summary"><span>Title:</span>  {{this.summary}}</p>
             <p class="event-item__date"><span>Title:</span>  {{this.start.date}}</p>

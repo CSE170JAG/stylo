@@ -64,21 +64,21 @@ app.post('/addEvent', function(req, res){
 
 app.post('/deleteEvent', function(req,res){
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
-  console.log(data.eventList)
-  var updatedEvents = data.eventList;
+  var deleteData = req.body;
+  var updatedEvents = data[deleteData.userId].eventList;
   for(var j = 0; j < updatedEvents.length; j++){
     var eventObj = updatedEvents[j];
 
-    if(eventObj["summary"].trim() === (req.body)["toDelete"].trim()){
+    if(eventObj["summary"].trim() === (deleteData.event).trim()){
       updatedEvents.splice(j,1);
       break;
     }
   }
-  data.eventList = updatedEvents;
+  data[deleteData.userId].eventList = updatedEvents;
   //console.log(req.body["toDelete"]);
 
   fs.writeFileSync('data.json', JSON.stringify(data));
-  res.send("OK");
+  res.send(deleteData.userId);
 });
 
 
@@ -105,17 +105,38 @@ app.post('/register', function(req, res){
   res.send(userData.uN);
 });
 
+app.post('/updateEvent', function(req, res){
+    var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+
+    var updateData = req.body;
+    var eventList =  data[updateData.userId].eventList;
+    for(var i = 0; i < eventList.length; i++){
+      var eventObj = eventList[i];
+      if(eventObj.summary === (updateData.oldEventTitle).trim()){
+        eventObj.start.date = updateData.event.start.date;
+        eventObj.start.time = updateData.event.start.time;
+        eventObj.description = updateData.event.description;
+        eventObj.summary = updateData.event.summary;
+        break;
+      }
+    }
+    data[updateData.userId].eventList = eventList;
+    fs.writeFileSync('data.json', JSON.stringify(data));
+    res.send(updateData.userId);
+
+});
+
 
 app.get('/loggedin/:userId', index.view);
 app.get('/addEvents/:userId', addEvents.view);
 app.get('/manageEvents/:userId', manageEvents.view);
 app.get('/accountPage/:userId', accountPage.view);
-app.get('/emailPage', emailPage.view);
+app.get('/emailPage/:userId', emailPage.view);
 app.get('/login', login.view);
 app.get('/register', register.view);
 app.get('/settingPage', settingPage.view);
-app.get('/faqPage', faqPage.view);
-app.get('/editEvent/:eventTitle', editEvent.view);
+app.get('/faqPage/:userId', faqPage.view);
+app.get('/editEvent/:eventTitle/:userId', editEvent.view);
 
 // Example route
 // app.get('/users', user.list);
