@@ -79,6 +79,7 @@ app.post('/deleteEvent', function(req,res){
   res.send("OK");
 });
 
+
 app.get('/', index.view);
 app.get('/addEvents', addEvents.view);
 app.get('/manageEvents', manageEvents.view);
@@ -88,6 +89,8 @@ app.get('/login', login.view);
 app.get('/register', register.view);
 app.get('/settingPage', settingPage.view);
 app.get('/faqPage', faqPage.view);
+app.get('/editEvent/:eventTitle', editEvent.view);
+
 app.get('/editEvent/:eventTitle', editEvent.view);
 
 // Example route
