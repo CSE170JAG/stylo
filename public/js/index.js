@@ -53,31 +53,41 @@ function initializePage() {
 	//http://localhost:3000/test
 	$("#submit-btn").on('click', function(){
 		var locationId = document.location.href.split('addEvents/')[1];
-		var newEvent = {
-			"summary": $('#event-title-input').val(),
-			"start": {
-				"date": $('#event-date-input').val(),
-				"time": $('#event-time-input').val()
-			},
-			"description": $('#event-desc-input').val()
-		}
 
-		var sendData = {
-			userId: locationId,
-			event: newEvent
-		}
+		var newTitle = ($('#event-title-input').val() != "");
+		var newDate = ($('#event-date-input').val() != "");
+		var newTime = ($('#event-time-input').val() != "");
+		var newDesc = ($('#event-desc-input').val() != "");
 
-		console.log("Clicked");
-		$.ajax(
-			{
-				type: "POST",
-				url: "/addEvent",
-				crossDomain:true,
-				dataType: "json",
-				data: sendData,
-				complete: function(res){ document.location.href = '/loggedin/'+res.responseText; }
+		if(newTitle && newDate && newTime && newDesc ){
+			var newEvent = {
+				"summary": $('#event-title-input').val(),
+				"start": {
+					"date": $('#event-date-input').val(),
+					"time": $('#event-time-input').val()
+				},
+				"description": $('#event-desc-input').val()
 			}
-	 	);
+
+			var sendData = {
+				userId: locationId,
+				event: newEvent
+			}
+
+			console.log("Clicked");
+			$.ajax(
+				{
+					type: "POST",
+					url: "/addEvent",
+					crossDomain:true,
+					dataType: "json",
+					data: sendData,
+					complete: function(res){ document.location.href = '/loggedin/'+res.responseText; }
+				}
+		 	);
+		}else{
+			var fillConfirm = confirm("Please fill out the entire form");
+		}
 	});
 
 	$(".cancel-submit-container #cancel-btn").on('click', function(){
@@ -89,35 +99,46 @@ function initializePage() {
 			var eventURL = String($('#event-title-input').val()) + '/'
 			var locationId = document.location.href.split('/')[5];
 			console.log(locationId);
-	 		var editConfirm = confirm("Are you sure you want to edit this event?");
-	 		if( editConfirm ){
 
-	 			//Enter new event first
-	 			var newEvent = {
-	 				"summary": $('#event-title-input').val(),
-	 				"start": {
-	 					"date": $('#event-date-input').val(),
-	 					"time": $('#event-time-input').val()
-	 				},
-	 				"description": $('#event-desc-input').val()
-	 			}
+			var newTitle = ($('#event-title-input').val() != "");
+			var newDate = ($('#event-date-input').val() != "");
+			var newTime = ($('#event-time-input').val() != "");
+			var newDesc = ($('#event-desc-input').val() != "");
 
-	 			//delete the old event
-	 			var currURL = document.URL; //get the title of the event through the url coz they might've changed it
+			if(newTitle && newDate && newTime && newDesc ){
+		 		var editConfirm = confirm("Are you sure you want to edit this event?");
+		 		if( editConfirm ){
 
-	 			var currEventAndName = currURL.split("editEvent/")[1];
-				var currEvent = currEventAndName.split('/' + locationId)[0];
-	 			currEvent = currEvent.replace( /%20/g, " "); //remove handlebar replacements for URL spaces
+		 			//Enter new event first
+		 			var newEvent = {
+		 				"summary": $('#event-title-input').val(),
+		 				"start": {
+		 					"date": $('#event-date-input').val(),
+		 					"time": $('#event-time-input').val()
+		 				},
+		 				"description": $('#event-desc-input').val()
+		 			}
 
-				var sendData = {
-					userId: locationId,
-					event: newEvent,
-					oldEventTitle: currEvent
-				}
-			$.post('/updateEvent', sendData, function(res) {
-					document.location.href = '/manageEvents/'+res;
-			});
-  	}});
+		 			//delete the old event
+		 			var currURL = document.URL; //get the title of the event through the url coz they might've changed it
+
+		 			var currEventAndName = currURL.split("editEvent/")[1];
+					var currEvent = currEventAndName.split('/' + locationId)[0];
+		 			currEvent = currEvent.replace( /%20/g, " "); //remove handlebar replacements for URL spaces
+
+					var sendData = {
+						userId: locationId,
+						event: newEvent,
+						oldEventTitle: currEvent
+					}
+				$.post('/updateEvent', sendData, function(res) {
+						document.location.href = '/manageEvents/'+res;
+				});
+  			} //end if(editConfirm)
+		} else {
+			var fillConfirm = confirm("Please fill out the entire form");
+		}
+	});
 
 
 	$(".event-item-edit-delete__delete").on('click', function(){
@@ -168,8 +189,7 @@ function initializePage() {
 				}
 			);
 		}else{
-			var fillConfirm = confirm("Please fill out entire form");
-
+			var fillConfirm = confirm("Please fill out the entire form");
 		}
 	});
 
