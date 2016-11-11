@@ -131,10 +131,20 @@ header {
   background: #fcfcfc;
   text-align: center; }
 
+.cloth-events-container__clothes h4 {
+  border-bottom: thin solid #ccc;
+  padding-bottom: 5px; }
+
+.cloth-event-container__title--small-text {
+  font-size: 16px;
+  margin: 10px 0;
+  border-bottom: thin solid #ccc;
+  padding-bottom: 5px; }
+
 .cloth-event-container__title {
   font-weight: 500;
   font-size: 24px;
-  padding-bottom: 3px;
+  padding: 3px;
   margin: 10px 0; }
 
 .clothes-list, .events {
@@ -148,14 +158,22 @@ header {
   padding: 10px;
   margin-bottom: 15px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border: thin solid #ccc;
   box-shadow: 0px 2px 10px #e4e4e4; }
 
 .cloth-item__description {
   word-break: break-all;
-  font-size: 18px;
-  margin-left: 20px; }
+  margin: 0;
+  font-size: 18px; }
+
+input[type="checkbox"].cloth-item__check-box {
+  display: block;
+  margin-top: 0;
+  margin-right: 10px;
+  width: 25px;
+  height: 25px; }
 
 /*-------------------CLOTHES LIST STYLING--------------------*/
 .add-event-btn {
@@ -294,6 +312,7 @@ header {
 .event-item-edit-delete__delete {
   background-color: #cf4831; }
 
+/*------------ACCOUNT PAGE STYLING-----------------*/
 /*---------FAQ PAGE STYLING--------*/
 .faq h1 {
   font-size: 25px;

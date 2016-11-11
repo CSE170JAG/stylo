@@ -24,7 +24,8 @@
 		{{> navmenu}}
 		<div class="cloth-events-container">
 			<div class="cloth-events-container__clothes">
-				<div class="cloth-event-container__title">Hey John, it looks like it'll be {{weather.daily.data.0.summary}} Here are your suggestions of what to bring today.</div>
+				<h4>Dail Breif</h4>
+				<div class="cloth-event-container__title--small-text">Hey <b>{{userInfo.fname}}</b>, it looks like it'll be <b>{{weather.daily.data.0.summary}}</b> Here are your suggestions of what to bring today.</div>
 				{{> hompage-clothes}}
 			</div>
 
