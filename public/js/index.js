@@ -54,8 +54,6 @@ function initializePage() {
 	 );
 	});
 
-
-
 	$(".delete-edit__delete").on('click', function(){
 			var eventObj = ($(this).parent()).siblings()[0].children[0].children[0].innerText;
 			var eventTitle = eventObj.split(":")[1]
@@ -70,6 +68,41 @@ function initializePage() {
 					console.log(res)
 				})
 			}
+	});
+
+	$("#reg-submit").on('click', function(){
+
+		var name1 = ($("#firstN-input").val() != "");
+		var last1 = ($("lastN-input").val() != "");
+		var user1 = ($("userN-input").val() != "");
+		var pass1 = ($("pass-input").val() != "");
+
+		if(name1 && last1 && user1 && pass1 ){
+			var sendData = {
+				"fN": $('#firstN-input').val(),
+				"lN": $('#lastN-input').val(),
+				"uN": $('#userN-input').val(),
+				"pass": $('#pass-input').val()
+			}
+
+			console.log("Clicked");
+			$.ajax(
+				{
+					type: "POST",
+					url: "/register",
+					crossDomain:true,
+					dataType: "json",
+					data: sendData,
+					complete: function(){
+            console.log("PLease redir");
+						document.location.href = '/'; 
+					}
+				}
+			);
+		}else{
+			var fillConfirm = confirm("Please fill out entire form");
+
+		}
 	});
 
 }

@@ -103,6 +103,16 @@ app.post('/deleteEvent', function(req,res){
   res.send("OK");
 });
 
+app.post('/register', function(req, res){
+  var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+  data.regList.push(req.body)
+
+  fs.writeFileSync('data.json', JSON.stringify(data));
+  console.log("Updated Data");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.send("OK");
+});
+
 app.get('/', index.view);
 app.get('/addEvents', addEvents.view);
 app.get('/manageEvents', manageEvents.view);
