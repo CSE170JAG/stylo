@@ -22,19 +22,24 @@
 	<div class="page-container">
 
 		{{> navmenu}}
-
-		<a href="/addEvents"><div class="add-event-btn">&plus;</div></a>
-
-
-		<div class="calendar-container">
-			<div class="calendar-container__toggle">
-				<div class="toggle__calendar active">Calendar</div>
-				<div class="toggle__events">Today's Events</div>
+		<div class="cloth-events-container">
+			<div class="cloth-events-container__clothes">
+				<h4>Dail Breif</h4>
+				<div class="cloth-event-container__title--small-text">Hey <b>{{userInfo.fname}}</b>, it looks like it'll be <b>{{weather.daily.data.0.summary}}</b> Here are your suggestions of what to bring today.</div>
+				{{> hompage-clothes}}
 			</div>
-			{{> calendar}}
-			{{> events}}
+
+			<div class="cloth-events-container__events" style="display:none">
+				<div class="cloth-event-container__title">Today's Events</div>
+				{{> events}}
+			</div>
 		</div>
-		{{> hompage-clothes}}
+
+		<div class="footer-navigation">
+			<div class="footer-navigation__clothes active"><i class="fa fa-suitcase" aria-hidden="true"></i></div>
+			<div class="footer-navigation__event-list"><i class="fa fa-list" aria-hidden="true"></i></div>
+		</div>
+
 	</div>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

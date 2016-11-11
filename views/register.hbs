@@ -38,7 +38,7 @@
 
         input,
         button {
-            border: thin solid #ccc; 
+            border: thin solid #ccc;
             font-family: inherit;
             font-size: inherit;
             line-height: inherit;
@@ -76,43 +76,36 @@
             </div>
         </header>
 
-        <div class="reg-info">
-            <form class="reg-info__form" action="" method="">
+
+            <form class="reg-info_form" name="regForm">
                 First Name: <br>
-                <input type="text" name="eventtitle" class="reg-info__form__input"> <br> Last Name: <br>
-                <input type="text" name="description" class="reg-info__form__input"> <br> Username: <br>
-                <input type="text" name="date" class="reg-info__form__input"> <br> Password: <br>
-                <input type="text" name="time" class="reg-info__form__input"> <br>
-
-
-                <button type="button" id="reg" class="reg-Button">Register</button>
-
-                <button type="button" id="back" class="back-Button">Back</button>
-
-
+                <input type="text" id="firstN-input" name="fn" class="reg-info__form__input" value=""> <br> Last Name: <br>
+                <input type="text" id="lastN-input" name="ln" class="reg-info__form__input" value=""> <br> Username: <br>
+                <input type="text" id="userN-input" name="un" class="reg-info__form__input" value=""> <br> Password: <br>
+                <input type="password" id="pass-input" name="pw" class="reg-info__form__input" value=""> <br>
+                <button type="button" id="reg-submit" class="reg-Button">Submit</button>
             </form>
-        </div>
 
 
-
-
-
+        <button type="button" id="back" class="back-Button">Back</button>
     </div>
     <!--end page-container -->
+
 </body>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<!-- button functions -->
+<script src="/js/index.js" charset="utf-8"></script>
+
+<!-- button functions ----------------------------------->
 <script type="text/javascript">
-    document.getElementById("reg").onclick = function() {
-        document.location.href = "/";
-    }
+//alert on missing text box info
 
-
+//Back button to login page
     document.getElementById("back").onclick = function() {
         document.location.href = "login";
     }
+
 </script>
-<!-- end of button functions -->
+<!-- end of button functions ----------------------------------->
 
 </html>

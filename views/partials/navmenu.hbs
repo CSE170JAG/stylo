@@ -1,6 +1,6 @@
 <header>
   <h1 class="header__site-name">
-    <a href="/">Stylo</a>
+    <a href="/loggedin/{{userInfo.username}}">Stylo</a>
   </h1>
   <div class="header__hamburger-menu">
     <span class="hamburger-menu__line"></span>
@@ -11,14 +11,13 @@
 
 <div class="menu-container close">
   <div class="menu-container__drawer-menu">
-
     <span class="drawer-menu__close-btn">&times;</span>
 
     <ul class="drawer-menu__list">
-      <a href="/accountPage">
+      <a href="/accountPage/{{userInfo.username}}">
         <li><i class="fa fa-user" aria-hidden="true"></i>Account</li>
       </a>
-      <a href="/manageEvents">
+      <a href="/manageEvents/{{userInfo.username}}">
         <li><i class="fa fa-calendar" aria-hidden="true"></i>Manage Events</li>
       </a>
       <a href="/settingPage" style="display: none;">
@@ -27,8 +26,8 @@
     </ul>
 
     <div class="drawer-menu__contact-section">
-      <div class="contact-section__contact"><a href="/emailPage"><p><i class="fa fa-envelope-o" aria-hidden="true"></i> Email Us<p></a></div>
-      <div class="contact-section__help"><a href="/faqPage"><p><i class="fa fa-question" aria-hidden="true"></i> FAQ</p></a></div>
+      <div class="contact-section__contact"><a href="/emailPage/{{userInfo.username}}"><p><i class="fa fa-envelope-o" aria-hidden="true"></i> Email Us<p></a></div>
+      <div class="contact-section__help"><a href="/faqPage/{{userInfo.username}}"><p><i class="fa fa-question" aria-hidden="true"></i> FAQ</p></a></div>
     </div>
   </div>
 </div>

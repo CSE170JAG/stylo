@@ -16,24 +16,23 @@ function initializePage() {
 		$(".menu-container").addClass('close', 1000);
 	});
 
-	$(".toggle__calendar").on('click', function(){
-			$(".toggle__events").removeClass('active');
-			$(this).addClass('active');
-			$('.calendar-container .calendar').show();
-			$('.calendar-container .events').hide();
+	$(".footer-navigation__clothes").on('click', function(){
+		 $(".footer-navigation__event-list").removeClass('active');
+		 $(".cloth-events-container__events").hide();
+		 $(this).addClass('active');
+		 $(".cloth-events-container__clothes").show();
 	});
-	$(".toggle__events").on('click', function(){
-			$(".toggle__calendar").removeClass('active');
+	$(".footer-navigation__event-list").on('click', function(){
+			$(".footer-navigation__clothes").removeClass('active');
+			 $(".cloth-events-container__clothes").hide();
 			$(this).addClass('active');
-			$('.calendar-container .events').show();
-			$('.calendar-container .calendar').hide();
+			$(".cloth-events-container__events").show();
 	});
-
 	// https://styloappstag.herokuapp.com/test
 	//http://localhost:3000/test
 	$("#submit-btn").on('click', function(){
-
-		var sendData = {
+		var locationId = document.location.href.split('addEvents/')[1];
+		var newEvent = {
 			"summary": $('#event-title-input').val(),
 			"start": {
 				"date": $('#event-date-input').val(),
@@ -41,6 +40,12 @@ function initializePage() {
 			},
 			"description": $('#event-desc-input').val()
 		}
+
+		var sendData = {
+			userId: locationId,
+			event: newEvent
+		}
+
 		console.log("Clicked");
 		$.ajax(
 			{
@@ -49,27 +54,102 @@ function initializePage() {
 				crossDomain:true,
 				dataType: "json",
 				data: sendData,
-				complete: function(){ document.location.href = '/'; }
+				complete: function(res){ document.location.href = '/loggedin/'+res.responseText; }
 			}
-	 );
+	 	);
 	});
 
+	$(".cancel-submit-container #cancel-btn").on('click', function(){
+		var locationId = document.location.href.split('addEvents/')[1];
+		document.location.href = '/loggedin/'+locationId;
+	});
+
+	$("#edit-btn").on('click', function(){
+			var eventURL = String($('#event-title-input').val()) + '/'
+			var locationId = document.location.href.split('/')[5];
+			console.log(locationId);
+	 		var editConfirm = confirm("Are you sure you want to edit this event?");
+	 		if( editConfirm ){
+
+	 			//Enter new event first
+	 			var newEvent = {
+	 				"summary": $('#event-title-input').val(),
+	 				"start": {
+	 					"date": $('#event-date-input').val(),
+	 					"time": $('#event-time-input').val()
+	 				},
+	 				"description": $('#event-desc-input').val()
+	 			}
+
+	 			//delete the old event
+	 			var currURL = document.URL; //get the title of the event through the url coz they might've changed it
+
+	 			var currEventAndName = currURL.split("editEvent/")[1];
+				var currEvent = currEventAndName.split('/' + locationId)[0];
+	 			currEvent = currEvent.replace( /%20/g, " "); //remove handlebar replacements for URL spaces
+
+				var sendData = {
+					userId: locationId,
+					event: newEvent,
+					oldEventTitle: currEvent
+				}
+			$.post('/updateEvent', sendData, function(res) {
+					document.location.href = '/manageEvents/'+res;
+			});
+  	}});
 
 
-	$(".delete-edit__delete").on('click', function(){
-			var eventObj = ($(this).parent()).siblings()[0].children[0].children[0].innerText;
-			var eventTitle = eventObj.split(":")[1]
+	$(".event-item-edit-delete__delete").on('click', function(){
+			var eventObj = ($(this).parent()).siblings()[0].children[0].innerText;
+			var eventTitle = eventObj.split(":")[1];
 			var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
 			if(deleteConfirm){
+				var locationId = document.location.href.split('manageEvents/')[1];
 				var postData = {
-					toDelete: eventTitle
+					userId: locationId,
+					event: eventTitle
 				}
 
 				$.post('/deleteEvent', postData, function(res){
-					document.location.href = '/manageEvents';
-					console.log(res)
+					document.location.href = '/manageEvents/'+res;
 				})
 			}
+	});
+
+	$("#reg-submit").on('click', function(){
+
+		var name1 = ($("#firstN-input").val() != "");
+		var last1 = ($("lastN-input").val() != "");
+		var user1 = ($("userN-input").val() != "");
+		var pass1 = ($("pass-input").val() != "");
+
+		if(name1 && last1 && user1 && pass1 ){
+			var sendData = {
+				"fN": $('#firstN-input').val(),
+				"lN": $('#lastN-input').val(),
+				"uN": $('#userN-input').val(),
+				"pass": $('#pass-input').val()
+			}
+
+			console.log("Clicked");
+			$.ajax(
+				{
+					type: "POST",
+					url: "/register",
+					crossDomain:true,
+					dataType: "json",
+					data: sendData,
+					complete: function(res){
+            console.log(res.responseText);
+						// sessionStorage.setItem('userId', res.responseText);
+						document.location.href = '/loggedin/'+res.responseText;
+					}
+				}
+			);
+		}else{
+			var fillConfirm = confirm("Please fill out entire form");
+
+		}
 	});
 
 }

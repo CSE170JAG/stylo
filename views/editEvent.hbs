@@ -8,21 +8,24 @@
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/main.css" rel="stylesheet">
 	<script src="https://use.fontawesome.com/9a7a508367.js"></script>
+
 	<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
 </head>
 <body>
   <div class="page-container">
     {{> navmenu}}
 
-    <div class="user-info-container">
-      <img class="user-info-container__profile-img" src={{userInfo.profileImg}} alt="" />
-      <p class="user-info-container__profile-img">{{userInfo.fname}}</p>
-      <p class="user-info-container__profile-img">{{userInfo.lname}}</p>
+    <form id="event-form">
+      <label>Event Title <br><input id="event-title-input" type="text" value="{{sendTitle}}"></label>
+      <label>Event Date <br><input id="event-date-input" type="date" value={{sendDate}}></label>
+      <label>Event Time <br><input id="event-time-input" type="time" value={{sendTime}}></label>
+      <label>Event Description <br><textarea id="event-desc-input" type="text">{{sendDescription}}</textarea></label>
+    </form>
+
+    <div class="cancel-submit-container">
+      <a href="javascript:history.back()"><button id="cancel-btn" type="button" name="button">Cancel</button></a>
+      <button id="edit-btn" type="button" name="button">Edit Event</button>
     </div>
-
-    <a href="/"><div class="manage-events-cancel-btn" class="cancel">Back</div></a>
-    <a href="/login"><div class="manage-events-cancel-btn" class="cancel">Logout</div></a>
-
   </div>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.min.js"></script>
