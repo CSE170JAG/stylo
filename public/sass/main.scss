@@ -144,7 +144,8 @@ header{
   height: 100%;
   text-align: center;
   line-height: $footer-nav-height;
-  font-size: 24px;
+  font-size: 20px;
+  font-family: sans-serif;
 
   &.active{
     background: $dark-primary-color;

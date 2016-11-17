@@ -106,10 +106,7 @@ function initializePage() {
 			var newDesc = ($('#event-desc-input').val() != "");
 
 			if(newTitle && newDate && newTime && newDesc ){
-		 		var editConfirm = confirm("Are you sure you want to edit this event?");
-		 		if( editConfirm ){
-
-		 			//Enter new event first
+		 			//Enter changed info first
 		 			var newEvent = {
 		 				"summary": $('#event-title-input').val(),
 		 				"start": {
@@ -119,22 +116,24 @@ function initializePage() {
 		 				"description": $('#event-desc-input').val()
 		 			}
 
-		 			//delete the old event
 		 			var currURL = document.URL; //get the title of the event through the url coz they might've changed it
-
 		 			var currEventAndName = currURL.split("editEvent/")[1];
 					var currEvent = currEventAndName.split('/' + locationId)[0];
+
 		 			currEvent = currEvent.replace( /%20/g, " "); //remove handlebar replacements for URL spaces
 
+					//prep data to post
 					var sendData = {
 						userId: locationId,
 						event: newEvent,
 						oldEventTitle: currEvent
 					}
-				$.post('/updateEvent', sendData, function(res) {
-						document.location.href = '/manageEvents/'+res;
+					//post data and go back to previous URL with new data entered;
+					$.post('/updateEvent', sendData, function(res) {
+						//document.location.href = '/manageEvents/'+res;
+						document.location.href = document.referrer; //go to previous URL
+
 				});
-  			} //end if(editConfirm)
 		} else {
 			var fillConfirm = confirm("Please fill out the entire form");
 		}
