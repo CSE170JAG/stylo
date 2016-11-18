@@ -4,11 +4,11 @@ exports.view = function(req, res){
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 
   var eventTitle = req.params.eventTitle;
-  //console.log("Event title is " + eventTitle );
+  console.log("Event title is " + eventTitle );
 
   var locationId = req.params.userId;
-  //console.log("Location Id is " + locationId );
-  //console.log( "Event Title in URL is " + eventTitle);
+  console.log("Location Id is " + locationId );
+  console.log( "Event Title in URL is " + eventTitle);
 
   var eventIndex;
 

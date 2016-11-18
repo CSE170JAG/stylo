@@ -12,6 +12,10 @@ var fs = require('fs');
 // Example route
 // var user = require('./routes/user');
 var index = require('./routes/index');
+
+// For use in A/B testing
+var index2 = require('./routes/index2');
+
 var addEvents = require('./routes/addEvents');
 var manageEvents = require('./routes/manageEvents');
 var accountPage = require('./routes/accountPage');
@@ -146,6 +150,11 @@ app.post('/updateEvent', function(req, res){
 
 app.get('/', login.view);
 app.get('/loggedin/:userId', index.view);
+
+// For use in A/B testing
+app.get('/loggedin2/:userId', index2.view);
+
+
 app.get('/addEvents/:userId', addEvents.view);
 app.get('/manageEvents/:userId', manageEvents.view);
 app.get('/accountPage/:userId', accountPage.view);

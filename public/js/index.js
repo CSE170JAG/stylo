@@ -42,12 +42,16 @@ function initializePage() {
 		 $(".cloth-events-container__events").hide();
 		 $(this).addClass('active');
 		 $(".cloth-events-container__clothes").show();
+		 sessionStorage.isEvents = false;
+		 console.log( "sessionStorage.isEvents is now " + sessionStorage.isEvents);
 	});
 	$(".footer-navigation__event-list").on('click', function(){
 			$(".footer-navigation__clothes").removeClass('active');
 			 $(".cloth-events-container__clothes").hide();
 			$(this).addClass('active');
 			$(".cloth-events-container__events").show();
+			sessionStorage.isEvents = true;
+			console.log( "sessionStorage.isEvents is now " + sessionStorage.isEvents);
 	});
 	// https://styloappstag.herokuapp.com/test
 	//http://localhost:3000/test
@@ -61,7 +65,7 @@ function initializePage() {
 
 		if(newTitle && newDate && newTime && newDesc ){
 			var newEvent = {
-				"summary": $('#event-title-input').val(),
+				"summary": $('#event-title-input').val().trim(),
 				"start": {
 					"date": $('#event-date-input').val(),
 					"time": $('#event-time-input').val()
@@ -106,12 +110,9 @@ function initializePage() {
 			var newDesc = ($('#event-desc-input').val() != "");
 
 			if(newTitle && newDate && newTime && newDesc ){
-		 		var editConfirm = confirm("Are you sure you want to edit this event?");
-		 		if( editConfirm ){
-
-		 			//Enter new event first
+		 			//Enter changed info first
 		 			var newEvent = {
-		 				"summary": $('#event-title-input').val(),
+		 				"summary": $('#event-title-input').val().trim(),
 		 				"start": {
 		 					"date": $('#event-date-input').val(),
 		 					"time": $('#event-time-input').val()
@@ -119,22 +120,24 @@ function initializePage() {
 		 				"description": $('#event-desc-input').val()
 		 			}
 
-		 			//delete the old event
 		 			var currURL = document.URL; //get the title of the event through the url coz they might've changed it
-
 		 			var currEventAndName = currURL.split("editEvent/")[1];
 					var currEvent = currEventAndName.split('/' + locationId)[0];
+
 		 			currEvent = currEvent.replace( /%20/g, " "); //remove handlebar replacements for URL spaces
 
+					//prep data to post
 					var sendData = {
 						userId: locationId,
 						event: newEvent,
 						oldEventTitle: currEvent
 					}
-				$.post('/updateEvent', sendData, function(res) {
-						document.location.href = '/manageEvents/'+res;
+					//post data and go back to previous URL with new data entered;
+					$.post('/updateEvent', sendData, function(res) {
+						//document.location.href = '/manageEvents/'+res;
+						document.location.href = document.referrer; //go to previous URL
+
 				});
-  			} //end if(editConfirm)
 		} else {
 			var fillConfirm = confirm("Please fill out the entire form");
 		}
@@ -156,6 +159,26 @@ function initializePage() {
 					document.location.href = '/manageEvents/'+res;
 				})
 			}
+	});
+
+	// For use in A/B Testing
+	$(".indexEvents__delete").on('click', function() {
+		// var eventObj = ($(this).parent()).siblings()[0].children[0].innerText;
+		var eventObj = ($(this).siblings()[0]).children[0].children[0].innerText;
+		var eventTitle = eventObj.split(":")[1];
+		var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
+		if(deleteConfirm){
+			var locationId = document.location.href.split('loggedin2/')[1];
+			var postData = {
+				userId: locationId,
+				event: eventTitle
+			}
+
+			$.post('/deleteEvent', postData, function(res){
+				 document.location.href = '/loggedin2/'+res;
+				//location.reload();
+			})
+		}
 	});
 
 	$("#reg-submit").on('click', function(){
