@@ -42,12 +42,16 @@ function initializePage() {
 		 $(".cloth-events-container__events").hide();
 		 $(this).addClass('active');
 		 $(".cloth-events-container__clothes").show();
+		 sessionStorage.isEvents = false;
+		 console.log( "sessionStorage.isEvents is now " + sessionStorage.isEvents);
 	});
 	$(".footer-navigation__event-list").on('click', function(){
 			$(".footer-navigation__clothes").removeClass('active');
 			 $(".cloth-events-container__clothes").hide();
 			$(this).addClass('active');
 			$(".cloth-events-container__events").show();
+			sessionStorage.isEvents = true;
+			console.log( "sessionStorage.isEvents is now " + sessionStorage.isEvents);
 	});
 	// https://styloappstag.herokuapp.com/test
 	//http://localhost:3000/test
@@ -61,7 +65,7 @@ function initializePage() {
 
 		if(newTitle && newDate && newTime && newDesc ){
 			var newEvent = {
-				"summary": $('#event-title-input').val(),
+				"summary": $('#event-title-input').val().trim(),
 				"start": {
 					"date": $('#event-date-input').val(),
 					"time": $('#event-time-input').val()
@@ -108,7 +112,7 @@ function initializePage() {
 			if(newTitle && newDate && newTime && newDesc ){
 		 			//Enter changed info first
 		 			var newEvent = {
-		 				"summary": $('#event-title-input').val(),
+		 				"summary": $('#event-title-input').val().trim(),
 		 				"start": {
 		 					"date": $('#event-date-input').val(),
 		 					"time": $('#event-time-input').val()
@@ -155,6 +159,26 @@ function initializePage() {
 					document.location.href = '/manageEvents/'+res;
 				})
 			}
+	});
+
+	// For use in A/B Testing
+	$(".indexEvents__delete").on('click', function() {
+		// var eventObj = ($(this).parent()).siblings()[0].children[0].innerText;
+		var eventObj = ($(this).siblings()[0]).children[0].children[0].innerText;
+		var eventTitle = eventObj.split(":")[1];
+		var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
+		if(deleteConfirm){
+			var locationId = document.location.href.split('loggedin2/')[1];
+			var postData = {
+				userId: locationId,
+				event: eventTitle
+			}
+
+			$.post('/deleteEvent', postData, function(res){
+				 document.location.href = '/loggedin2/'+res;
+				//location.reload();
+			})
+		}
 	});
 
 	$("#reg-submit").on('click', function(){
