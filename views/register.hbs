@@ -1,111 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        header {
-            height: 65px;
-            background: #00796B;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            box-shadow: 0 -1px 10px #000;
-            color: white;
-        }
-
-        body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 14px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            margin-left: 2em;
-            margin-right: 2em;
-            margin-top: 2em;
-        }
-
-        .reg-info__form__input {
-            display: block;
-            width: auto;
-            height: 2em;
-        }
-
-        input,
-        button {
-            border: thin solid #ccc;
-            font-family: inherit;
-            font-size: inherit;
-            line-height: inherit;
-            margin-top: 0.5em;
-        }
-
-        .reg-Button {
-            width: auto;
-            height: 4.5em;
-            border-radius: 25px;
-            background-color: #00a897;
-            color: white;
-        }
-
-        .back-Button {
-            width: 30%;
-            height: 3.5em;
-            margin-top: 1.5em;
-            border-radius: 25px;
-            font-size: 0.75em;
-            background-color: #00796B;
-            color: white;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+    <script src="https://use.fontawesome.com/9a7a508367.js"></script>
+    <link rel="stylesheet" href="css/main.css" media="screen" title="no title">
 </head>
 
 <body>
     <div class="page-container">
-        <header>
-            <h1 class="header__title">Stylo</h1>
-            <div class="header__menu-toggle">
-                <span class="menu-toggle__divider"></span>
-                <span class="menu-toggle__divider"></span>
-                <span class="menu-toggle__divider"></span>
-            </div>
-        </header>
-
-
-            <form class="reg-info_form" name="regForm">
-                First Name: <br>
-                <input type="text" id="firstN-input" name="fn" class="reg-info__form__input" value=""> <br> Last Name: <br>
-                <input type="text" id="lastN-input" name="ln" class="reg-info__form__input" value=""> <br> Username: <br>
-                <input type="text" id="userN-input" name="un" class="reg-info__form__input" value=""> <br> Password: <br>
-                <input type="password" id="pass-input" name="pw" class="reg-info__form__input" value=""> <br>
-                <button type="button" id="reg-submit" class="reg-Button">Submit</button>
-            </form>
-
-
-        <button type="button" id="back" class="back-Button">Back</button>
+        <div class="register-header">
+            <a href="/login"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+            <p>Register for Stylo</p>
+        </div>
+        <form class="reg-info_form" name="regForm">
+          First Name: <br>
+          <input type="text" id="firstN-input" name="fn" class="reg-info__form__input" value="" required> <br> Last Name: <br>
+          <input type="text" id="lastN-input" name="ln" class="reg-info__form__input" value="" required> <br> Username: <br>
+          <input type="text" id="userN-input" name="un" class="reg-info__form__input" value="" required> <br> Password: <br>
+          <input type="password" id="pass-input" name="pw" class="reg-info__form__input" value="" required> <br> Confirm Password: <br>
+          <input type="password" id="pass-input-confirm" name="pw" class="reg-info__form__input" value="" required>
+          <button type="button" id="reg-submit" class="reg-Button">Submit</button>
+        </form>
     </div>
     <!--end page-container -->
-
 </body>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="/js/index.js" charset="utf-8"></script>
-
-<!-- button functions ----------------------------------->
-<script type="text/javascript">
-//alert on missing text box info
-
-//Back button to login page
-    document.getElementById("back").onclick = function() {
-        document.location.href = "login";
-    }
-
-</script>
-<!-- end of button functions ----------------------------------->
 
 </html>

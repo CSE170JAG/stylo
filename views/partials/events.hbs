@@ -1,6 +1,7 @@
 <div class="events">
   {{#each eventList}}
       <div class="events__event-item">
+        <div class="event-item__delete"><i class="fa fa-times" aria-hidden="true"></i></div>
         <a href="/editEvent/{{this.summary}}/{{../userInfo.username}}" style="display:block">
           <div class="event-item__date-title-container">
             <p class="event-item__summary"><span>Title:</span>  {{this.summary}}</p>
@@ -12,8 +13,9 @@
       </div>
   {{else}}
     <div class="no-events-conatiner">
-      <p class="no-events-smiley">:]</p>
+      <p class="no-events-smiley">:)</p>
       <p class="no-envents-message">Looks like you don't have any events.</p>
+      <a href="/addEvents/{{userInfo.username}}" class="no-events-conatiner__add-event">Would You Like To Add One?</a>
     </div>
   {{/each}}
 

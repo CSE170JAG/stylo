@@ -10,12 +10,6 @@
 	<link href="/css/main.css" rel="stylesheet">
 	<script src="https://use.fontawesome.com/9a7a508367.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
 </head>
 
 <body>
@@ -25,7 +19,7 @@
 		<div class="cloth-events-container">
 			<div class="cloth-events-container__clothes">
 				<h4>Daily Brief</h4>
-				<div class="cloth-event-container__title--small-text">Hey <b>{{userInfo.fname}}</b>, it looks like it'll be <b>{{weather.daily.data.0.summary}}</b> Here are your suggestions for what to bring today.</div>
+				<div class="cloth-event-container__title--small-text">Hey <b>{{userInfo.fname}}</b>, it looks like it'll be <b>{{weather.daily.data.0.summary}}</b> Here are suggestions of what to bring today:</div>
 				{{> hompage-clothes}}
 			</div>
 
@@ -38,8 +32,8 @@
 		</div>
 
 		<div class="footer-navigation">
-			<div class="footer-navigation__clothes active"><i class="fa fa-suitcase" aria-hidden="true"> items</i></div>
-			<div class="footer-navigation__event-list"><i class="fa fa-list" aria-hidden="true"> today's events</i></div>
+			<div class="footer-navigation__clothes active"><i class="fa fa-suitcase" aria-hidden="true"></i>Items</div>
+			<div class="footer-navigation__event-list"><i class="fa fa-list" aria-hidden="true"></i>Today's Events</div>
 		</div>
 
 	</div>

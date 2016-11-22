@@ -6,5 +6,11 @@
       <p class="cloth-item__description">{{this.itemDesc}}</p>
       <input class="cloth-item__check-box" type="checkbox" name="name" value="">
     </div>
-  {{/each}}
+    {{else}}
+      <div class="no-events-conatiner clothes-list">
+        <p class="no-events-smiley">:)</p>
+        <p class="no-envents-message">Looks like you don't have any events.</p>
+        <a href="/addEvents/{{userInfo.username}}" class="no-events-conatiner__add-event">Lets Start by Adding One.</a>
+      </div>
+    {{/each}}
 </div>

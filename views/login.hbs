@@ -8,101 +8,29 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://use.fontawesome.com/9a7a508367.css" media="all" rel="stylesheet">
-
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-		}
-
-		header {
-			height: 65px;
-			background: #00796B;
-			width: 100vw;
-			margin: 0;
-		}
-
-		form {
-			display: flex;
-			flex-direction: column;
-			margin-left: 2em;
-			margin-right: 2em;
-			margin-top: 2em;
-		}
-		.login-info_input {
-			display: block;
-			width: auto;
-			height: 2em;
-		}
-
-		.img {
-			height: 150px;
-			width: 150px;
-			padding-top: 1.5em;
-		}
-
-		input,
-		button {
-			border: thin solid #ccc;
-			font-family: inherit;
-			font-size: inherit;
-			line-height: inherit;
-			margin-top: 0.5em;
-		}
-
-		.login-info {}
-
-		.page-container {
-			position: relative;
-			width: 100vw;
-			height: 100vh;
-		}
-
-		.wrapper {
-			position: absolute;
-			width: 100%;
-			display: flex;
-			justify-content: space-around;
-			align-items: center;
-			text-align: center;
-			padding: 0 20px;
-		}
-
-		.button {}
-	</style>
+	<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css" media="screen" title="no title">
 </head>
 
 <body>
 	<div class="page-container">
-		<header>
-			<h1 class="header_title">Stylo</h1>
-		</header>
+		<div class="login-container">
+			<h1 class="login-container-title">Stylo</h1>
+			<div class="login-container-bg"></div>
+			<div class="login-container-input">
+				<label class="login-container-input__username">Username: <br>
+					<input type="text" id="login-username">
+				</label>
+				<label class="login-container-input__password">Password: <br>
+					<input type="password" id="login-password">
+				</label>
 
-		<!-- <center><img src="./images/styloLogo.jpg" class="img"></center> -->
-
-
-		<form>
-
-			Username: <br>
-			<input type="text" id="login-username" class="login-info_input"> <br> Password: <br>
-			<input type="password" id="login-password" class="login-info_input"> <br>
-
-		</form>
-
-
-		<div class="wrapper">
-
-			<button type="button" class="button" id="tologin">Login</button>
-			<a href="/register"><button type="button" class="button" id="toreg">New User? Register Here</button></a>
-
+				<button type="button" class="button" id="tologin">Login</button>
+				<a href="/register" id="toreg">New User? Register Here</a>
+			</div>
 		</div>
-
 	</div>
 	<!-- end page-Container -->
-
-
-
 </body>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>

@@ -15,14 +15,32 @@
     {{> navmenu}}
 
     <div class="user-info-container">
+      <h2>Hello,</h2>
       <img class="user-info-container__profile-img" src={{userInfo.profileImg}} alt="" />
-      <p class="user-info-container__profile-img">{{userInfo.fname}}</p>
-      <p class="user-info-container__profile-img">{{userInfo.lname}}</p>
+      <div class="user-info-container__user-info">
+        <p class="user-info-container__profile-fname">{{userInfo.fname}}</p>
+        <p class="user-info-container__profile-lname">{{userInfo.lname}}</p>
+      </div>
     </div>
 
-    <a href="javascript:history.back()"><div class="manage-events-cancel-btn" class="cancel">Back</div></a>
-    <a href="/login"><div class="manage-events-cancel-btn" class="cancel">Logout</div></a>
+    <div class="edit-user-info-container">
+      <label> First Name:<br>
+        <input class="edit-user-info-container__fname" type="text">
+      </label>
+      <label> Last Name:<br>
+        <input class="edit-user-info-container__lname" type="text">
+      </label>
 
+      <label> Update Password:<br>
+        <input class="edit-user-info-container__oldpass" type="text" placeholder="Old Password"><br>
+      </label>
+        <input class="edit-user-info-container__newpass" type="text" placeholder="New Password"><br>
+    </div>
+
+    <div class="back-finish-container">
+      <a href="javascript:history.back()"><div class="back-finish-container__back">Back</div></a>
+      <a href=""><div class="back-finish-container__finish manage-events-cancel-btn">Save</div></a>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.min.js"></script>

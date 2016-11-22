@@ -43,7 +43,7 @@ function initializePage() {
 		 $(this).addClass('active');
 		 $(".cloth-events-container__clothes").show();
 		 sessionStorage.isEvents = false;
-		 console.log( "sessionStorage.isEvents is now " + sessionStorage.isEvents);
+		 //console.log( "sessionStorage.isEvents is now " + sessionStorage.isEvents);
 	});
 	$(".footer-navigation__event-list").on('click', function(){
 			$(".footer-navigation__clothes").removeClass('active');
@@ -51,26 +51,26 @@ function initializePage() {
 			$(this).addClass('active');
 			$(".cloth-events-container__events").show();
 			sessionStorage.isEvents = true;
-			console.log( "sessionStorage.isEvents is now " + sessionStorage.isEvents);
+			//console.log( "sessionStorage.isEvents is now " + sessionStorage.isEvents);
 	});
 	// https://styloappstag.herokuapp.com/test
 	//http://localhost:3000/test
 	$("#submit-btn").on('click', function(){
 		var locationId = document.location.href.split('addEvents/')[1];
 
-		var newTitle = ($('#event-title-input').val() != "");
-		var newDate = ($('#event-date-input').val() != "");
-		var newTime = ($('#event-time-input').val() != "");
-		var newDesc = ($('#event-desc-input').val() != "");
+		var newTitle = $('#event-title-input').val().trim();
+		var newDate = $('#event-date-input').val();
+		var newTime = $('#event-time-input').val();
+		var newDesc = $('#event-desc-input').val();
 
-		if(newTitle && newDate && newTime && newDesc ){
+		if(newTitle != '' && newDate != '' && newTime != '' && newDesc != '' ){
 			var newEvent = {
-				"summary": $('#event-title-input').val().trim(),
+				"summary": newTitle,
 				"start": {
-					"date": $('#event-date-input').val(),
-					"time": $('#event-time-input').val()
+					"date": newDate,
+					"time": newTime
 				},
-				"description": $('#event-desc-input').val()
+				"description": newDesc
 			}
 
 			var sendData = {
@@ -78,7 +78,6 @@ function initializePage() {
 				event: newEvent
 			}
 
-			console.log("Clicked");
 			$.ajax(
 				{
 					type: "POST",
@@ -102,22 +101,21 @@ function initializePage() {
 	$("#edit-btn").on('click', function(){
 			var eventURL = String($('#event-title-input').val()) + '/'
 			var locationId = document.location.href.split('/')[5];
-			console.log(locationId);
 
-			var newTitle = ($('#event-title-input').val() != "");
-			var newDate = ($('#event-date-input').val() != "");
-			var newTime = ($('#event-time-input').val() != "");
-			var newDesc = ($('#event-desc-input').val() != "");
-
-			if(newTitle && newDate && newTime && newDesc ){
+			var newTitle = $('#event-title-input').val().trim();
+			var newDate = $('#event-date-input').val();
+			var newTime = $('#event-time-input').val();
+			var newDesc = $('#event-desc-input').val();
+			console.log(newTitle);
+			if(newTitle != '' && newDate != '' && newTime != '' && newDesc != '' ){
 		 			//Enter changed info first
 		 			var newEvent = {
-		 				"summary": $('#event-title-input').val().trim(),
+		 				"summary": newTitle,
 		 				"start": {
-		 					"date": $('#event-date-input').val(),
-		 					"time": $('#event-time-input').val()
+		 					"date": newDate,
+		 					"time": newTime
 		 				},
-		 				"description": $('#event-desc-input').val()
+		 				"description": newDesc
 		 			}
 
 		 			var currURL = document.URL; //get the title of the event through the url coz they might've changed it
@@ -126,6 +124,7 @@ function initializePage() {
 
 		 			currEvent = currEvent.replace( /%20/g, " "); //remove handlebar replacements for URL spaces
 
+					console.log(currEvent); 
 					//prep data to post
 					var sendData = {
 						userId: locationId,
@@ -143,7 +142,6 @@ function initializePage() {
 		}
 	});
 
-
 	$(".event-item-edit-delete__delete").on('click', function(){
 			var eventObj = ($(this).parent()).siblings()[0].children[0].innerText;
 			var eventTitle = eventObj.split(":")[1];
@@ -159,6 +157,24 @@ function initializePage() {
 					document.location.href = '/manageEvents/'+res;
 				})
 			}
+	});
+
+	//Delete an event from the homepage event list
+	$('.event-item__delete').on('click', function(){
+		var eventObj = $(this).siblings().children()[0].children[0].innerText;
+		var eventTitle = eventObj.split(":")[1];
+		var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
+		if(deleteConfirm){
+			var locationId = document.location.href.split('loggedin/')[1];
+			var postData = {
+				userId: locationId,
+				event: eventTitle
+			}
+
+			$.post('/deleteEvent', postData, function(res){
+				document.location.href = '/loggedin/'+res;
+			})
+		}
 	});
 
 	// For use in A/B Testing
@@ -183,34 +199,45 @@ function initializePage() {
 
 	$("#reg-submit").on('click', function(){
 
-		var name1 = ($("#firstN-input").val() != "");
-		var last1 = ($("lastN-input").val() != "");
-		var user1 = ($("userN-input").val() != "");
-		var pass1 = ($("pass-input").val() != "");
+		var name1 = $("#firstN-input").val();
+		var last1 = $("#lastN-input").val();
+		var user1 = $("#userN-input").val();
+		var pass1 = $("#pass-input").val();
+		var passConfirm = $('#pass-input-confirm').val();
 
-		if(name1 && last1 && user1 && pass1 ){
-			var sendData = {
-				"fN": $('#firstN-input').val(),
-				"lN": $('#lastN-input').val(),
-				"uN": $('#userN-input').val(),
-				"pass": $('#pass-input').val()
+		if(name1 != '' && last1 != '' && user1 != '' && pass1 != '' ){
+			if(pass1 === passConfirm){
+				var sendData = {
+					"fN": name1,
+					"lN": name1,
+					"uN": user1,
+					"pass": pass1
+				}
+
+				$.ajax(
+					{
+						type: "POST",
+						url: "/register",
+						crossDomain:true,
+						dataType: "json",
+						data: sendData,
+						complete: function(res){
+							// sessionStorage.setItem('userId', res.responseText);
+							document.location.href = '/loggedin/'+res.responseText;
+						}
+					}
+				);
+			}else{
+				alert('Passwords do not match. Please enter again.');
+				$('#pass-input-confirm').val('');
+				$("#pass-input").css({
+					'border': 'thin solid red'
+				});
+				$('#pass-input-confirm').css({
+					'border': 'thin solid red'
+				});
 			}
 
-			console.log("Clicked");
-			$.ajax(
-				{
-					type: "POST",
-					url: "/register",
-					crossDomain:true,
-					dataType: "json",
-					data: sendData,
-					complete: function(res){
-            console.log(res.responseText);
-						// sessionStorage.setItem('userId', res.responseText);
-						document.location.href = '/loggedin/'+res.responseText;
-					}
-				}
-			);
 		}else{
 			var fillConfirm = confirm("Please fill out the entire form");
 		}
