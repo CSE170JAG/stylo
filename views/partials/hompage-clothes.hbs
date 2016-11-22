@@ -2,8 +2,8 @@
 <div class="clothes-list">
   {{#each clothList}}
     <div class="clothes-list__cloth-item">
-      <img src="http://placehold.it/100x100" alt="" class="cloth-item__img">
-      <p class="cloth-item__description">{{this.itemDesc}}</p>
+      <img src="/images/{{this.itemImg}}" alt="" class="cloth-item__img">
+      <p class="cloth-item__description">{{this.itemName}}</p>
       <input class="cloth-item__check-box" type="checkbox" name="name" value="">
     </div>
     {{else}}

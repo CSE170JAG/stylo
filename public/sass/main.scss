@@ -321,7 +321,10 @@ header{
   flex-direction: column;
   align-items: center;
 }
-
+.cloth-item__img{
+  width: 100px;
+  height: 100px; 
+}
 .clothes-list__cloth-item, .events__event-item{
   background: #fff;
   width: 90%;
