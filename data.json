@@ -1,1 +1,290 @@
-{"regList":{"Kguy19":"whataremygrades","ffPW":"password","mjack":"children","poop":"ddasfsadf","bman":"alfred"},"userInfo":{"fname":"John","lname":"Doe","profileImg":"http://placehold.it/100/100"},"inventory":{"bonfire":["Shirt","T Shirt","Hoodie","Flip Flops","Flash Light","Umbrella"],"beach":["Shirt","T Shirt","Hoodie","Flip Flops","Flash Light","Umbrella"],"party":["Slim Jeans","Leather Jacket","Boots","ID Card"],"bar":["Slim Jeans","Leather Jacket","Boots","ID Card"],"interview":["Dress Shirt","Dress Pants","Suit","Dress Shoes","Oxford Cotton Button Down","Resume"],"dinner":["Dress Shirt","Coat","Dress Shoes"],"dining":["Dress Shirt","Coat","Dress Shoes"],"hiking":["Hiking Boots","Tennis Shoes","Beanie","Thermal","Waterbottle","Windbreaker","Gloves","T Shirt"]},"Kguy19":{"userInfo":{"username":"Kguy19","fname":"Kandarp","lname":"Guy","upass":"whataremygrades","profileImg":"http://placehold.it/100/100"},"eventList":[{"summary":"Interview","start":{"date":"2016-12-31","time":"12:59"},"description":"yay"}]},"ffPW":{"userInfo":{"username":"ffPW","fname":"Paul","lname":"Walker","upass":"password","profileImg":"http://placehold.it/100/100"},"eventList":[]},"mjack":{"userInfo":{"username":"mjack","fname":"Micheal ","lname":"Jackson ","upass":"children","profileImg":"http://placehold.it/100/100"},"eventList":[{"summary":"Hiking","start":{"date":"2016-12-31","time":"12:59"},"description":"gibbersh"}]},"poop":{"userInfo":{"username":"poop","fname":"Afdsafdsfasd","lname":"asdfl","upass":"ddasfsadf","profileImg":"http://placehold.it/100/100"},"eventList":[]},"bman":{"userInfo":{"username":"bman","fname":"batman","lname":"wayne ","upass":"asfdasdf","profileImg":"http://placehold.it/100/100"},"eventList":[{"summary":"asasjldhlj","start":{"date":"2016-01-01","time":"12:59"},"description":"shldajsdalkjh"},{"summary":"Hiking","start":{"date":"2016-12-31","time":"22:59"},"description":"asdalsjkdh"}]}}
+{
+    "regList": {
+        "Kguy19": "whataremygrades",
+        "ffPW": "password",
+        "mjack": "children",
+        "poop": "ddasfsadf",
+        "bman": "alfred",
+        "": "",
+        "bman2": "",
+        "hhhhh": "qqqqq"
+    },
+    "userInfo": {
+        "fname": "John",
+        "lname": "Doe",
+        "profileImg": "http://placehold.it/100/100"
+    },
+    "inventory": {
+        "bonfire": [
+                    {
+                      "itemName": "Blue T-Shirt",
+                      "itemImg": "TShirt-Blue.png"
+                    },
+                    {
+                      "itemName":"Hoodie",
+                      "itemImg": "Hoodie.png"
+                    },
+                    {
+                      "itemName": "Flip Flops",
+                      "itemImg": "FlipFlops.png"
+                    },
+                    {
+                      "itemName": "Flash Light",
+                      "itemImg": "Flashlight.png"
+                    },
+                    {
+                      "itemName": "Umbrella",
+                      "itemImg": "Umbrella.png"
+                    }
+                  ],
+        "beach": [
+                    {
+                      "itemName": "Red T-Shirt",
+                      "itemImg": "TShirt-Red.png"
+                    },
+                    {
+                      "itemName": "Hoodie",
+                      "itemImg": "Hoodie.png"
+                    },
+                    {
+                      "itemName": "Flip Flops",
+                      "itemImg": "FlipFlops.png"
+                    },
+                    {
+                      "itemName": "Flash Light",
+                      "itemImg": "Flashlight.png"
+                    },
+                    {
+                      "itemName": "Umbrella",
+                      "itemImg": "Umbrella.png"
+                    }
+                  ],
+        "party": [
+                  {
+                    "itemName": "Slim Jeans",
+                    "itemImg": "Jeans.png"
+                  },
+                  {
+                    "itemName": "Dress Shoes",
+                    "itemImg": "DressShoes.png"
+                  },
+                  {
+                    "itemName": "ID Card",
+                    "itemImg": "ID.png"
+                  }
+                 ],
+        "bar": [
+                {
+                  "itemName": "Khakis",
+                  "itemImg": "Khakis.png"
+                },
+                {
+                  "itemName": "Jacket",
+                  "itemImg": "Suit.png"
+                },
+                {
+                  "itemName": "Shoes",
+                  "itemImg": "DressShoes.png"
+                },
+                {
+                  "itemName": "ID Card",
+                  "itemImg": "ID.png"
+                }
+               ],
+        "interview": [
+                      {
+                        "itemName": "Dress Shirt",
+                        "itemImg": "DressShirt.png"
+                      },
+                      {
+                        "itemName": "Dress Pants",
+                        "itemImg": "Jeans.png"
+                      },
+                      {"itemName":"Suit",
+                        "itemImg": "Suit.jpg"
+                      },
+                      {"itemName":"Dress Shoes",
+                        "itemImg": "DressShoes.png"
+                      },
+                      {"itemName":"Oxford Cotton Button Down",
+                        "itemImg": "LongSleeveButtonUp.png"
+                      },
+                      {
+                        "itemName":"Resume",
+                        "itemImg": "Resume.png"
+                      }
+                     ],
+        "dinner": [
+                    {"itemName":"Dress Shirt",
+                      "itemImg": "DressShirt.png"
+                    },
+                    {"itemName":"Coat",
+                      "itemImg": "Suit.png"
+                    },
+                    {"itemName":"Dress Shoes",
+                      "itemImg": "DressShoes.png"
+                    }
+                  ],
+        "dining": [
+                    {"itemName":"Dress Shirt",
+                      "itemImg": "DressShirt.png"
+                    },
+                    {"itemName":"Coat",
+                      "itemImg": "Suit.png"
+                    },
+                    {"itemName":"Dress Shoes",
+                      "itemImg": "DressShoes.png"
+                    }
+                  ],
+        "hiking": [
+                    {"itemName":"Hiking Boots",
+                      "itemImg": "HikingBoots.png"
+                    },
+                    {"itemName":"Sunglasses",
+                      "itemImg": "Sunglasses.png"
+                    },
+                    {"itemName":"Tank Top",
+                      "itemImg": "TankTop.png"
+                    },
+                    {"itemName":"Waterbottle",
+                      "itemImg": "Water.png"
+                    },
+                    {"itemName":"Windbreaker",
+                      "itemImg": "Windbreaker.png"
+                    },
+                    {"itemName":"T Shirt",
+                      "itemImg": "TShirt-Gray.png"
+                    }
+                  ]
+    },
+    "Kguy19": {
+        "userInfo": {
+            "username": "Kguy19",
+            "fname": "Kandarp",
+            "lname": "Guy",
+            "upass": "whataremygrades",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": [{
+            "summary": "Interview",
+            "start": {
+                "date": "2016-12-31",
+                "time": "12:59"
+            },
+            "description": "yay"
+        }]
+    },
+    "ffPW": {
+        "userInfo": {
+            "username": "ffPW",
+            "fname": "Paul",
+            "lname": "Walker",
+            "upass": "password",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": []
+    },
+    "mjack": {
+        "userInfo": {
+            "username": "mjack",
+            "fname": "Micheal ",
+            "lname": "Jackson ",
+            "upass": "children",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": [{
+            "summary": "Hiking",
+            "start": {
+                "date": "2016-12-31",
+                "time": "12:59"
+            },
+            "description": "gibbersh"
+        }]
+    },
+    "poop": {
+        "userInfo": {
+            "username": "poop",
+            "fname": "Afdsafdsfasd",
+            "lname": "asdfl",
+            "upass": "ddasfsadf",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": []
+    },
+    "bman": {
+        "userInfo": {
+            "username": "bman",
+            "fname": "batman",
+            "lname": "wayne ",
+            "upass": "asfdasdf",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": [{
+            "summary": "Dinner with Pauliowow",
+            "start": {
+                "date": "123",
+                "time": "123"
+            },
+            "description": "dsafasdf"
+        }, {
+            "summary": "Bonfire",
+            "start": {
+                "date": "123",
+                "time": "123"
+            },
+            "description": "and;fkjas;lfkjd;s"
+        }, {
+            "summary": "Beach",
+            "start": {
+                "date": "asdflaskdfj",
+                "time": "ask;fjdsaf"
+            },
+            "description": "and;lfkjasd;lfkj"
+        }, {
+            "summary": "Hiking",
+            "start": {
+                "date": "asdlfkj;sdlfj",
+                "time": "fast;"
+            },
+            "description": "asdfas;dflkja;sdlkfj"
+        }]
+    },
+    "": {
+        "userInfo": {
+            "username": "",
+            "fname": "Add",
+            "lname": "",
+            "upass": "",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": []
+    },
+    "bman2": {
+        "userInfo": {
+            "username": "bman2",
+            "fname": "Add",
+            "lname": "",
+            "upass": "",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": []
+    },
+    "undefined": {
+        "userInfo": {
+            "fname": "A",
+            "lname": "A",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": []
+    },
+    "hhhhh": {
+        "userInfo": {
+            "username": "hhhhh",
+            "fname": "A",
+            "lname": "A",
+            "upass": "qqqqq",
+            "profileImg": "http://placehold.it/100/100"
+        },
+        "eventList": []
+    }
+}

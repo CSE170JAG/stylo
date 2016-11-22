@@ -22,9 +22,9 @@
       <label>Event Description <br><textarea id="event-desc-input" type="text">{{sendDescription}}</textarea></label>
     </form>
 
-    <div class="cancel-submit-container">
-      <a href="javascript:history.back()"><button id="cancel-btn" type="button" name="button">Cancel</button></a>
-      <button id="edit-btn" type="button" name="button">Save Changes</button>
+    <div class="back-finish-container">
+      <a href="javascript:history.back()"><div id="cancel-btn" class="back-finish-container__back">Cancel</div></a>
+      <a href=""><div id="edit-btn" class="back-finish-container__finish manage-events-cancel-btn">Save</div></a>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery.js"></script>

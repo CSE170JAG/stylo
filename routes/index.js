@@ -26,7 +26,7 @@ forecast.get([32.7157, 117.1611], true, function(err, weather) {
 
 exports.view = function(req, res){
   console.log(req.session);
-  var userId = req.params.userId; 
+  var userId = req.params.userId;
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
   var clothes = [];
   var events = data[userId]["eventList"];
@@ -36,7 +36,8 @@ exports.view = function(req, res){
     for(var j = 0; j < 3; j++){
       //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
       if(data["inventory"][eventKey]){
-          clothes.push(JSON.parse('{ "itemDesc": "' + data["inventory"][eventKey][j] +'"}'));
+          clothes.push(data["inventory"][eventKey][j]);
+          console.log(data["inventory"][eventKey][j]);
       }
     }
   }

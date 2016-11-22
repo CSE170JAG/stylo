@@ -1,9 +1,115 @@
 a {
-  text-decoration: none !important;
+  text-decoration: none;
   color: #000; }
 
 .page-container {
   z-index: 100; }
+
+.login-container {
+  text-align: center; }
+
+.login-container-title {
+  color: #fff;
+  font-family: 'Fugaz One', cursive;
+  font-size: 60px;
+  letter-spacing: 3px;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2; }
+
+.login-container-bg {
+  width: 100%;
+  height: 100vh;
+  background-image: url("/images/login-bg.jpeg");
+  filter: blur(3px) grayscale(1);
+  background-position: center;
+  background-size: cover; }
+
+.login-container-input {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 350px;
+  background: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  padding-top: 20px;
+  border-radius: 2px; }
+
+.login-container-input__username, .login-container-input__password {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400; }
+  .login-container-input__username input, .login-container-input__password input {
+    width: 90%;
+    height: 30px;
+    border-radius: 2px;
+    border: none;
+    margin-top: 5px;
+    margin-bottom: 15px; }
+
+.login-container-input #tologin {
+  display: block;
+  background: #00796B;
+  border: none;
+  width: 130px;
+  height: 40px;
+  margin: 20px auto;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px; }
+
+.login-container-input #toreg {
+  font-size: 14px;
+  text-decoration: underline; }
+
+/*------------------STYLING FOR REGISTER PAGE-------------------*/
+.register-header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .register-header a {
+    font-size: 24px;
+    color: #00796B;
+    margin-left: 10px; }
+  .register-header p {
+    color: #00796B;
+    font-family: 'Fugaz One', cursive;
+    font-size: 24px;
+    letter-spacing: 3px;
+    margin-right: 20px; }
+
+.reg-info_form {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 500; }
+
+.reg-info__form__input {
+  width: 90%;
+  height: 30px;
+  border: thin solid #ccc;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 16px; }
+
+#reg-submit {
+  background: #00796B;
+  border: none;
+  width: 130px;
+  height: 40px;
+  margin: 40px auto;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px; }
 
 /*---------------------STYLING FOR HEADER-----------------------*/
 header {
@@ -105,6 +211,25 @@ header {
   border-right: thin solid #ccc; }
 
 /*-----------STYLING FOR CLOTHING & EVENTS----------*/
+.no-events-conatiner {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 100vw;
+  transform: translate(-50%, -50%);
+  font-size: 18px; }
+
+.no-events-smiley {
+  font-size: 32px;
+  font-weight: bold; }
+
+.no-events-conatiner__add-event {
+  font-size: 16px;
+  color: #607D8B; }
+
+.no-events-conatiner.clothes-list {
+  top: 50%; }
+
 .footer-navigation {
   display: flex;
   justify-content: space-around;
@@ -120,8 +245,11 @@ header {
   height: 100%;
   text-align: center;
   line-height: 40px;
-  font-size: 20px;
+  font-size: 16px;
   font-family: sans-serif; }
+  .footer-navigation__clothes i, .footer-navigation__event-list i {
+    font-size: 20px;
+    margin-right: 5px; }
   .footer-navigation__clothes.active, .footer-navigation__event-list.active {
     background: #00796B;
     color: white; }
@@ -153,6 +281,10 @@ header {
   flex-direction: column;
   align-items: center; }
 
+.cloth-item__img {
+  width: 100px;
+  height: 100px; }
+
 .clothes-list__cloth-item, .events__event-item {
   background: #fff;
   width: 90%;
@@ -176,7 +308,7 @@ input[type="checkbox"].cloth-item__check-box {
   width: 25px;
   height: 25px; }
 
-/*-------------------CLOTHES LIST STYLING--------------------*/
+/*-------------------EVENT LIST STYLING--------------------*/
 .add-event-btn {
   border-radius: 100%;
   width: 55px;
@@ -195,6 +327,11 @@ input[type="checkbox"].cloth-item__check-box {
 .events__event-item {
   display: block;
   text-align: left; }
+
+.event-item__delete {
+  font-size: 20px;
+  text-align: right;
+  margin-right: 5px; }
 
 .event-item__summary {
   font-size: 18px;
@@ -282,7 +419,7 @@ input[type="checkbox"].cloth-item__check-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: calc(100vh - 65px);
+  height: calc(100vh - 150px);
   overflow: scroll;
   padding-bottom: 300px; }
 
@@ -314,6 +451,46 @@ input[type="checkbox"].cloth-item__check-box {
   background-color: #cf4831; }
 
 /*------------ACCOUNT PAGE STYLING-----------------*/
+.user-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .user-info-container h2 {
+    margin-left: 5px; }
+
+.user-info-container__profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%; }
+
+.user-info-container__user-info {
+  margin-top: 10px;
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 16px;
+  font-weight: 500; }
+
+.edit-user-info-container {
+  border-top: thin solid #ccc;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; }
+  .edit-user-info-container label {
+    width: 100%;
+    text-align: center; }
+  .edit-user-info-container input {
+    width: 90%;
+    height: 30px;
+    border: thin solid #ccc;
+    border-radius: 2px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    padding-left: 5px; }
+
 /*---------FAQ PAGE STYLING--------*/
 .faq h1 {
   font-size: 25px;
