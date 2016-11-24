@@ -9,7 +9,9 @@
     {{else}}
       <div class="no-events-conatiner clothes-list">
         <p class="no-events-smiley">:)</p>
-        <p class="no-envents-message">Looks like you don't have any events.</p>
+        <p class="no-envents-message">Hey <b>{{userInfo.fname}}</b>, let's help you
+            stay prepared for the day! We'll help you stay prepared by keeping track of things you may need.</p>
+        <a href="/addEvents/?user={{userInfo.username}}" class="no-events-conatiner__add-event">Lets Start by Adding an Event.</a>
       </div>
     {{/each}}
 </div>

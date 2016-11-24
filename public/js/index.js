@@ -64,6 +64,9 @@ function initializePage() {
 		var newDesc = $('#event-desc-input').val();
 
 		if(newTitle != '' && newDate != '' && newTime != '' && newDesc != '' ){
+
+			ga('send', 'event', 'button', 'click', 'Add Event');
+			
 			var newEvent = {
 				"summary": newTitle,
 				"start": {
@@ -135,7 +138,7 @@ function initializePage() {
 					$.post('/updateEvent', sendData, function(res) {
 						//document.location.href = '/manageEvents/'+res;
 						//document.location.href = document.referrer; //go to previous URL
-						document.location.href = '/loggedin/'+res;
+						document.location.href = '/loggedin/?user='+res;
 				});
 		} else {
 			var fillConfirm = confirm("Please fill out the entire form");
@@ -178,24 +181,24 @@ function initializePage() {
 	});
 
 	// For use in A/B Testing
-	$(".indexEvents__delete").on('click', function() {
-		// var eventObj = ($(this).parent()).siblings()[0].children[0].innerText;
-		var eventObj = ($(this).siblings()[0]).children[0].children[0].innerText;
-		var eventTitle = eventObj.split(":")[1];
-		var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
-		if(deleteConfirm){
-			var locationId = document.location.href.split('loggedin2/')[1];
-			var postData = {
-				userId: locationId,
-				event: eventTitle
-			}
-
-			$.post('/deleteEvent', postData, function(res){
-				 document.location.href = '/loggedin2/'+res;
-				//location.reload();
-			})
-		}
-	});
+	// $(".indexEvents__delete").on('click', function() {
+	// 	// var eventObj = ($(this).parent()).siblings()[0].children[0].innerText;
+	// 	var eventObj = ($(this).siblings()[0]).children[0].children[0].innerText;
+	// 	var eventTitle = eventObj.split(":")[1];
+	// 	var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
+	// 	if(deleteConfirm){
+	// 		var locationId = document.location.href.split('loggedin2/')[1];
+	// 		var postData = {
+	// 			userId: locationId,
+	// 			event: eventTitle
+	// 		}
+	//
+	// 		$.post('/deleteEvent', postData, function(res){
+	// 			 document.location.href = '/loggedin2/'+res;
+	// 			//location.reload();
+	// 		})
+	// 	}
+	// });
 
 	$("#reg-submit").on('click', function(){
 
