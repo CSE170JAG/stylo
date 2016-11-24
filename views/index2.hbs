@@ -10,14 +10,24 @@
 	<link href="/css/main.css" rel="stylesheet">
 	<script src="https://use.fontawesome.com/9a7a508367.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
-
 </head>
+
+<!-- Google Analytics Content Experiment code -->
+<script>function utmx_section(){}function utmx(){}(function(){var
+k='134547606-1',d=document,l=d.location,c=d.cookie;
+if(l.search.indexOf('utm_expid='+k)>0)return;
+function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+</script><script>utmx('url','A/B');</script>
+<!-- End of Google Analytics Content Experiment code -->
+
+
 
 <body>
 	<div class="page-container">
@@ -26,21 +36,21 @@
 		<div class="cloth-events-container">
 			<div class="cloth-events-container__clothes">
 				<h4>Daily Brief</h4>
-				<div class="cloth-event-container__title--small-text">Hey <b>{{userInfo.fname}}</b>, it looks like it'll be <b>{{weather.daily.data.0.summary}}</b> Here are your suggestions for what to bring today.</div>
-				{{> hompage-clothes}}
+				<div class="cloth-event-container__title--small-text">Hey <b>{{userInfo.fname}}</b>, it looks like it'll be <b>{{weather.daily.data.0.summary}}</b> Here are suggestions of what to bring today:</div>
+				{{> hompage-clothes2}}
 			</div>
 
 			<div class="cloth-events-container__events" style="display:none">
-				<div class="cloth-event-container__title">Today's Events</div>
+				<div class="cloth-event-container__title">Events</div>
 
-				<!--TODO: for each event, only display ones happening today  -->
+				<!--TODO: display only events in present and future  -->
 				{{> events2}}
 			</div>
 		</div>
 
 		<div class="footer-navigation">
-			<div class="footer-navigation__clothes active"><i class="fa fa-suitcase" aria-hidden="true"> items</i></div>
-			<div class="footer-navigation__event-list"><i class="fa fa-list" aria-hidden="true"> Events</i></div>
+			<div class="footer-navigation__clothes active"><i class="fa fa-suitcase" aria-hidden="true"></i>Items</div>
+			<div class="footer-navigation__event-list"><i class="fa fa-list" aria-hidden="true"></i>Events</div>
 		</div>
 
 	</div>
@@ -48,7 +58,7 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/index.js" charset="utf-8"></script>
 
-	<!-- Script to keep user on event list or clothes after leaving page-->
+	<!-- Script to keep user on event list or clothes after leaving page -->
 	<script>
 	if(typeof(Storage) !== "undefined") {
 		if( sessionStorage.isEvents == "true" ) {
@@ -56,21 +66,29 @@
 			$(".cloth-events-container__clothes").hide();
 			$(".footer-navigation__event-list").addClass('active');
 			$(".cloth-events-container__events").show();
-			console.log( "Displaying event list!");
 		}
 		else {
 			$(".footer-navigation__event-list").removeClass('active');
 			$(".cloth-events-container__events").hide();
 			$(".footer-navigation__clothes").addClass('active');
 			$(".cloth-events-container__clothes").show();
-			console.log( "Displaying clothes!");
 		}
-
-		console.log( "sessionStorage.isEvents when page loaded is " + sessionStorage.isEvents);
 	}
 	else {
 		sessionStorage.isEvents = false;
 	}
 	</script>
+
+	  <!-- Google analytics -->
+	  <script>
+	      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	      ga('create', 'UA-87906372-1', 'auto');
+	      ga('send', 'pageview');
+	  </script>
+
 </body>
 </html>

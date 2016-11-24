@@ -1,0 +1,15 @@
+
+<div class="clothes-list">
+  {{#each clothList}}
+    <div class="clothes-list__cloth-item">
+      <img src="/images/{{this.itemImg}}" alt="" class="cloth-item__img">
+      <p class="cloth-item__description">{{this.itemName}}</p>
+      <input class="cloth-item__check-box" type="checkbox" name="name" value="">
+    </div>
+    {{else}}
+      <div class="no-events-conatiner clothes-list">
+        <p class="no-events-smiley">:)</p>
+        <p class="no-envents-message">Looks like you don't have any events.</p>
+      </div>
+    {{/each}}
+</div>

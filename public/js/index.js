@@ -134,7 +134,8 @@ function initializePage() {
 					//post data and go back to previous URL with new data entered;
 					$.post('/updateEvent', sendData, function(res) {
 						//document.location.href = '/manageEvents/'+res;
-						document.location.href = document.referrer; //go to previous URL
+						//document.location.href = document.referrer; //go to previous URL
+						document.location.href = '/loggedin/'+res;
 
 				});
 		} else {
@@ -242,5 +243,4 @@ function initializePage() {
 			var fillConfirm = confirm("Please fill out the entire form");
 		}
 	});
-
 }

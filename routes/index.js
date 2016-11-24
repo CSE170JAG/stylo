@@ -42,5 +42,30 @@ exports.view = function(req, res){
   }
   data[userId]['clothList'] = clothes;
   data[userId]['weather'] = fcData;
+
+  data[userId]["suggestAdd"] = false;
+
   res.render('index', data[userId]);
+};
+
+exports.viewSuggestAdd = function(req, res){
+  console.log(req.session);
+  var userId = req.params.userId;
+  var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+  var clothes = [];
+  var events = data[userId]["eventList"];
+  for(var i = 0; i < events.length; i++){
+    var eventSummary = (events[i]["summary"]).split(" ");
+    var eventKey = eventSummary[0].toLowerCase();
+    for(var j = 0; j < 3; j++){
+      //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
+      if(data["inventory"][eventKey]){
+          clothes.push(data["inventory"][eventKey][j]);
+          console.log(data["inventory"][eventKey][j]);
+      }
+    }
+  }
+  data[userId]['clothList'] = clothes;
+  data[userId]['weather'] = fcData;
+  res.render('index2', data[userId]);
 };
