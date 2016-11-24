@@ -174,7 +174,9 @@ function initializePage() {
 			if( locationId.includes("&") ) {
 				locationId = locationId.split('&')[0];
 			}
-			
+
+			console.log( "locationId is " + locationId);
+
 			var postData = {
 				userId: locationId,
 				event: eventTitle
