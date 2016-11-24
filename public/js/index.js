@@ -66,7 +66,7 @@ function initializePage() {
 		if(newTitle != '' && newDate != '' && newTime != '' && newDesc != '' ){
 
 			ga('send', 'event', 'button', 'click', 'Add Event');
-			
+
 			var newEvent = {
 				"summary": newTitle,
 				"start": {
@@ -169,6 +169,12 @@ function initializePage() {
 		var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
 		if(deleteConfirm){
 			var locationId = document.location.href.split('loggedin/?user=')[1];
+
+			//Fix error caused my google analytics URL appendage
+			if( locationId.includes("&") ) {
+				locationId = locationId.split('&')[0];
+			}
+			
 			var postData = {
 				userId: locationId,
 				event: eventTitle
