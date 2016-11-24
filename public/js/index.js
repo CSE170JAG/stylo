@@ -136,7 +136,6 @@ function initializePage() {
 						//document.location.href = '/manageEvents/'+res;
 						//document.location.href = document.referrer; //go to previous URL
 						document.location.href = '/loggedin/'+res;
-
 				});
 		} else {
 			var fillConfirm = confirm("Please fill out the entire form");
