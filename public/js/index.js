@@ -166,6 +166,9 @@ function initializePage() {
 		var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
 		if(deleteConfirm){
 			var locationId = document.location.href.split('loggedin/')[1];
+			if( locationId.includes("?" ) ) {
+				locationId = locationId.split('?')[0];
+			}
 			var postData = {
 				userId: locationId,
 				event: eventTitle
