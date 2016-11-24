@@ -131,6 +131,8 @@ app.post('/updateEvent', function(req, res){
     var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 
     var updateData = req.body;
+    console.log(updateData);
+
     var eventList =  data[updateData.userId].eventList;
     for(var i = 0; i < eventList.length; i++){
       var eventObj = eventList[i];
@@ -149,22 +151,22 @@ app.post('/updateEvent', function(req, res){
 });
 
 app.get('/', login.view);
-app.get('/loggedin/:userId', index.view);
+app.get('/loggedin/', index.view);
 
 // For use in A/B testing
 app.get('/loggedin2/:userId', index.viewSuggestAdd);
 //app.get('/loggedin2/:userId', index2.view);
 
 
-app.get('/addEvents/:userId', addEvents.view);
-app.get('/manageEvents/:userId', manageEvents.view);
-app.get('/accountPage/:userId', accountPage.view);
+app.get('/addEvents/', addEvents.view);
+app.get('/manageEvents/', manageEvents.view);
+app.get('/accountPage/', accountPage.view);
 app.get('/emailPage/:userId', emailPage.view);
 app.get('/login', login.view);
 app.get('/register', register.view);
 app.get('/settingPage', settingPage.view);
-app.get('/faqPage/:userId', faqPage.view);
-app.get('/editEvent/:eventTitle/:userId', editEvent.view);
+app.get('/faqPage/', faqPage.view);
+app.get('/editEvent/:eventTitle/', editEvent.view);
 
 // Example route
 // app.get('/users', user.list);

@@ -24,7 +24,7 @@ function initializePage() {
 				if(res === 'false'){
 					alert("An incorrect username/password has been entered. Please try again.");
 				}else{
-					document.location.href = '/loggedin/'+res;
+					document.location.href = '/loggedin/?user='+res;
 				}
 		});
 	});
@@ -56,7 +56,7 @@ function initializePage() {
 	// https://styloappstag.herokuapp.com/test
 	//http://localhost:3000/test
 	$("#submit-btn").on('click', function(){
-		var locationId = document.location.href.split('addEvents/')[1];
+		var locationId = document.location.href.split('addEvents/?user=')[1];
 
 		var newTitle = $('#event-title-input').val().trim();
 		var newDate = $('#event-date-input').val();
@@ -85,7 +85,7 @@ function initializePage() {
 					crossDomain:true,
 					dataType: "json",
 					data: sendData,
-					complete: function(res){ document.location.href = '/loggedin/'+res.responseText; }
+					complete: function(res){ document.location.href = '/loggedin/?user='+res.responseText; }
 				}
 		 	);
 		}else{
@@ -94,19 +94,17 @@ function initializePage() {
 	});
 
 	$(".cancel-submit-container #cancel-btn").on('click', function(){
-		var locationId = document.location.href.split('addEvents/')[1];
-		document.location.href = '/loggedin/'+locationId;
+		var locationId = document.location.href.split('addEvents/?user=')[1];
+		document.location.href = '/loggedin/?user='+locationId;
 	});
 
 	$("#edit-btn").on('click', function(){
-			var eventURL = String($('#event-title-input').val()) + '/'
-			var locationId = document.location.href.split('/')[5];
+			var locationId = document.location.href.split('/?user=')[1];
 
 			var newTitle = $('#event-title-input').val().trim();
 			var newDate = $('#event-date-input').val();
 			var newTime = $('#event-time-input').val();
 			var newDesc = $('#event-desc-input').val();
-			console.log(newTitle);
 			if(newTitle != '' && newDate != '' && newTime != '' && newDesc != '' ){
 		 			//Enter changed info first
 		 			var newEvent = {
@@ -118,9 +116,11 @@ function initializePage() {
 		 				"description": newDesc
 		 			}
 
-		 			var currURL = document.URL; //get the title of the event through the url coz they might've changed it
-		 			var currEventAndName = currURL.split("editEvent/")[1];
-					var currEvent = currEventAndName.split('/' + locationId)[0];
+		 			var currURL = document.URL.split("/?user="); //get the title of the event through the url coz they might've changed it
+		 			var currEventAndName = currURL[1];
+
+
+					var currEvent = currURL[0].split('/')[4]
 
 		 			currEvent = currEvent.replace( /%20/g, " "); //remove handlebar replacements for URL spaces
 
@@ -147,14 +147,14 @@ function initializePage() {
 			var eventTitle = eventObj.split(":")[1];
 			var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
 			if(deleteConfirm){
-				var locationId = document.location.href.split('manageEvents/')[1];
+				var locationId = document.location.href.split('manageEvents/?user=')[1];
 				var postData = {
 					userId: locationId,
 					event: eventTitle
 				}
 
 				$.post('/deleteEvent', postData, function(res){
-					document.location.href = '/manageEvents/'+res;
+					document.location.href = '/manageEvents/?user='+res;
 				})
 			}
 	});
@@ -165,17 +165,14 @@ function initializePage() {
 		var eventTitle = eventObj.split(":")[1];
 		var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
 		if(deleteConfirm){
-			var locationId = document.location.href.split('loggedin/')[1];
-			if( locationId.includes("?" ) ) {
-				locationId = locationId.split('?')[0];
-			}
+			var locationId = document.location.href.split('loggedin/?user=')[1];
 			var postData = {
 				userId: locationId,
 				event: eventTitle
 			}
 
 			$.post('/deleteEvent', postData, function(res){
-				document.location.href = '/loggedin/'+res;
+				document.location.href = '/loggedin/?user='+res;
 			})
 		}
 	});
@@ -226,7 +223,7 @@ function initializePage() {
 						data: sendData,
 						complete: function(res){
 							// sessionStorage.setItem('userId', res.responseText);
-							document.location.href = '/loggedin/'+res.responseText;
+							document.location.href = '/loggedin/?user='+res.responseText;
 						}
 					}
 				);
