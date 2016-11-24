@@ -124,7 +124,7 @@ function initializePage() {
 
 		 			currEvent = currEvent.replace( /%20/g, " "); //remove handlebar replacements for URL spaces
 
-					console.log(currEvent); 
+					console.log(currEvent);
 					//prep data to post
 					var sendData = {
 						userId: locationId,
@@ -242,5 +242,4 @@ function initializePage() {
 			var fillConfirm = confirm("Please fill out the entire form");
 		}
 	});
-
 }

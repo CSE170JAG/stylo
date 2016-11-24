@@ -24,16 +24,16 @@
 			</div>
 
 			<div class="cloth-events-container__events" style="display:none">
-				<div class="cloth-event-container__title">Today's Events</div>
+				<div class="cloth-event-container__title">Events</div>
 
-				<!--TODO: for each event, only display ones happening today  -->
+				<!--TODO: display only events in present and future  -->
 				{{> events}}
 			</div>
 		</div>
 
 		<div class="footer-navigation">
 			<div class="footer-navigation__clothes active"><i class="fa fa-suitcase" aria-hidden="true"></i>Items</div>
-			<div class="footer-navigation__event-list"><i class="fa fa-list" aria-hidden="true"></i>Today's Events</div>
+			<div class="footer-navigation__event-list"><i class="fa fa-list" aria-hidden="true"></i>Events</div>
 		</div>
 
 	</div>
@@ -49,17 +49,13 @@
 			$(".cloth-events-container__clothes").hide();
 			$(".footer-navigation__event-list").addClass('active');
 			$(".cloth-events-container__events").show();
-			console.log( "Displaying event list!");
 		}
 		else {
 			$(".footer-navigation__event-list").removeClass('active');
 			$(".cloth-events-container__events").hide();
 			$(".footer-navigation__clothes").addClass('active');
 			$(".cloth-events-container__clothes").show();
-			console.log( "Displaying clothes!");
 		}
-
-		console.log( "sessionStorage.isEvents when page loaded is " + sessionStorage.isEvents);
 	}
 	else {
 		sessionStorage.isEvents = false;

@@ -10,13 +10,6 @@
 	<link href="/css/main.css" rel="stylesheet">
 	<script src="https://use.fontawesome.com/9a7a508367.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
-
 </head>
 
 <body>
@@ -26,21 +19,21 @@
 		<div class="cloth-events-container">
 			<div class="cloth-events-container__clothes">
 				<h4>Daily Brief</h4>
-				<div class="cloth-event-container__title--small-text">Hey <b>{{userInfo.fname}}</b>, it looks like it'll be <b>{{weather.daily.data.0.summary}}</b> Here are your suggestions for what to bring today.</div>
-				{{> hompage-clothes}}
+				<div class="cloth-event-container__title--small-text">Hey <b>{{userInfo.fname}}</b>, it looks like it'll be <b>{{weather.daily.data.0.summary}}</b> Here are suggestions of what to bring today:</div>
+				{{> hompage-clothes2}}
 			</div>
 
 			<div class="cloth-events-container__events" style="display:none">
-				<div class="cloth-event-container__title">Today's Events</div>
+				<div class="cloth-event-container__title">Events</div>
 
-				<!--TODO: for each event, only display ones happening today  -->
+				<!--TODO: display only events in present and future  -->
 				{{> events2}}
 			</div>
 		</div>
 
 		<div class="footer-navigation">
-			<div class="footer-navigation__clothes active"><i class="fa fa-suitcase" aria-hidden="true"> items</i></div>
-			<div class="footer-navigation__event-list"><i class="fa fa-list" aria-hidden="true"> Events</i></div>
+			<div class="footer-navigation__clothes active"><i class="fa fa-suitcase" aria-hidden="true"></i>Items</div>
+			<div class="footer-navigation__event-list"><i class="fa fa-list" aria-hidden="true"></i>Events</div>
 		</div>
 
 	</div>
@@ -48,7 +41,7 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/index.js" charset="utf-8"></script>
 
-	<!-- Script to keep user on event list or clothes after leaving page-->
+	<!-- Script to keep user on event list or clothes after leaving page -->
 	<script>
 	if(typeof(Storage) !== "undefined") {
 		if( sessionStorage.isEvents == "true" ) {
@@ -56,17 +49,13 @@
 			$(".cloth-events-container__clothes").hide();
 			$(".footer-navigation__event-list").addClass('active');
 			$(".cloth-events-container__events").show();
-			console.log( "Displaying event list!");
 		}
 		else {
 			$(".footer-navigation__event-list").removeClass('active');
 			$(".cloth-events-container__events").hide();
 			$(".footer-navigation__clothes").addClass('active');
 			$(".cloth-events-container__clothes").show();
-			console.log( "Displaying clothes!");
 		}
-
-		console.log( "sessionStorage.isEvents when page loaded is " + sessionStorage.isEvents);
 	}
 	else {
 		sessionStorage.isEvents = false;
