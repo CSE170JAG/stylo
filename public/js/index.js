@@ -65,8 +65,11 @@ function initializePage() {
 
 		if(newTitle != '' && newDate != '' && newTime != '' && newDesc != '' ){
 
-			ga('send', 'event', 'button', 'click', 'Add Event');
-
+			// ga('send', 'event', 'button', 'click', 'Add Event');
+			if(typeof(Storage) !== "undefined" ) {
+				ga('send', 'timing', 'button', 'click', (Date.now() - sessionStorage.startTime ), 'Add Event');
+				console.log( "~ms between homepage & submit new event button is " + (Date.now() - sessionStorage.startTime  ) );
+			}
 			var newEvent = {
 				"summary": newTitle,
 				"start": {

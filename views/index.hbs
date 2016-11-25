@@ -69,9 +69,8 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 			$(".footer-navigation__clothes").addClass('active');
 			$(".cloth-events-container__clothes").show();
 		}
-	}
-	else {
-		sessionStorage.isEvents = false;
+
+		sessionStorage.startTime = Date.now();
 	}
 	</script>
 
