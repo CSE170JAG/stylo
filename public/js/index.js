@@ -251,4 +251,49 @@ function initializePage() {
 			var fillConfirm = confirm("Please fill out the entire form");
 		}
 	});
+
+
+	$('#account-save').on('click', function(e){
+		e.preventDefault();
+		var locationId = document.location.href.split('/?user=')[1];
+
+		var fName = $('.edit-user-info-container__fname').val().trim();
+		var lName = $('.edit-user-info-container__lname').val().trim();
+		var oldPass = $('.edit-user-info-container__oldpass').val().trim();
+		var newPass = $('.edit-user-info-container__newpass').val().trim();
+
+		var confirmInfo = confirm('Are you sure you want to update your information?');
+
+		if(confirmInfo){
+			if(oldPass !== newPass){
+				alert('Passwords do not match. Please enter again.');
+				$('.edit-user-info-container__newpass').val('');
+				$('.edit-user-info-container__oldpass').css({
+					'border': 'thin solid red'
+				});
+				$('.edit-user-info-container__newpass').css({
+					'border': 'thin solid red'
+				});
+			}else{
+				$('.edit-user-info-container__oldpass').css({
+					'border': 'thin solid #ccc'
+				});
+				$('.edit-user-info-container__newpass').css({
+					'border': 'thin solid #ccc'
+				});
+				var newData = {
+					fname: fName,
+					lname: lName,
+					upass: newPass
+				}
+				var updateData = {
+					userId: locationId,
+					updateInfo: newData
+				}
+				$.post('/updateInfo', updateData, function(res){
+					document.location.href = '/accountPage/?user='+locationId;
+				});
+			}
+		}
+	});
 }

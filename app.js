@@ -56,6 +56,23 @@ app.post('/', function (req, res) {
   res.send(JSON.parse(fs.readFileSync('data.json', 'utf8')));
 });
 
+app.post('/updateInfo', function(req, res){
+  var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+
+  var updateInfo = req.body.updateInfo;
+  var userId = req.body.userId;
+  console.log(data[userId].userInfo)
+  for(var k in updateInfo){
+    if(updateInfo[k]){
+      data[userId].userInfo[k] = updateInfo[k]
+    }
+  }
+
+  fs.writeFileSync('data.json', JSON.stringify(data));
+  res.header("Access-Control-Allow-Origin", "*");
+  res.send(userId);
+});
+
 app.post('/addEvent', function(req, res){
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
   var addData = req.body;
@@ -116,7 +133,7 @@ app.post('/register', function(req, res){
       fname: userData.fN,
       lname: userData.lN,
       upass: userData.pass,
-      profileImg: "http://placehold.it/100/100"
+      profileImg: "https://unsplash.it/100/100"
     },
     eventList: []
   }
