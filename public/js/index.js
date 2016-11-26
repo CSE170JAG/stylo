@@ -99,11 +99,6 @@ function initializePage() {
 		}
 	});
 
-	$(".cancel-submit-container #cancel-btn").on('click', function(){
-		var locationId = document.location.href.split('addEvents/?user=')[1];
-		document.location.href = '/loggedin/?user='+locationId;
-	});
-
 	$("#edit-btn").on('click', function(){
 			var locationId = document.location.href.split('/?user=')[1];
 

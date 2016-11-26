@@ -22,7 +22,11 @@
     </form>
 
     <div class="cancel-submit-container">
-      <button id="cancel-btn" type="button" name="button">Cancel</button>
+      {{#if testVersion1}}
+        <a href="/loggedin/?user={{userInfo.username}}"><button id="cancel-btn" type="button" name="button">Cancel</button></a>
+      {{else}}
+        <a href="/loggedin2/?user={{userInfo.username}}"><button id="cancel-btn" type="button" name="button">Cancel</button></a>
+      {{/if}}
       <button id="submit-btn" type="button" name="button">Add Event</button>
     </div>
   </div>

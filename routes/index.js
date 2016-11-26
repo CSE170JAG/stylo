@@ -26,8 +26,8 @@ forecast.get([32.7157, 117.1611], true, function(err, weather) {
 
 exports.view = function(req, res){
   var userId = req.query.user;
-
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+  data[userId]['testVersion1'] = '1'
   var clothes = [];
   var events = data[userId]["eventList"];
   for(var i = 0; i < events.length; i++){
@@ -50,8 +50,9 @@ exports.view = function(req, res){
 
 exports.viewSuggestAdd = function(req, res){
   console.log(req.session);
-  var userId = req.params.userId;
+  var userId = req.query.user;
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+  data[userId]['testVersion2'] = '2'
   var clothes = [];
   var events = data[userId]["eventList"];
   for(var i = 0; i < events.length; i++){
