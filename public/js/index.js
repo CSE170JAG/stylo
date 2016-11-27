@@ -186,26 +186,6 @@ function initializePage() {
 		}
 	});
 
-	// For use in A/B Testing
-	// $(".indexEvents__delete").on('click', function() {
-	// 	// var eventObj = ($(this).parent()).siblings()[0].children[0].innerText;
-	// 	var eventObj = ($(this).siblings()[0]).children[0].children[0].innerText;
-	// 	var eventTitle = eventObj.split(":")[1];
-	// 	var deleteConfirm = confirm("Are you sure you want to delete the event: "+eventTitle+"?");
-	// 	if(deleteConfirm){
-	// 		var locationId = document.location.href.split('loggedin2/')[1];
-	// 		var postData = {
-	// 			userId: locationId,
-	// 			event: eventTitle
-	// 		}
-	//
-	// 		$.post('/deleteEvent', postData, function(res){
-	// 			 document.location.href = '/loggedin2/'+res;
-	// 			//location.reload();
-	// 		})
-	// 	}
-	// });
-
 	$("#reg-submit").on('click', function(){
 
 		var name1 = $("#firstN-input").val();
@@ -218,7 +198,7 @@ function initializePage() {
 			if(pass1 === passConfirm){
 				var sendData = {
 					"fN": name1,
-					"lN": name1,
+					"lN": last1,
 					"uN": user1,
 					"pass": pass1
 				}
@@ -295,5 +275,15 @@ function initializePage() {
 				});
 			}
 		}
+	});
+
+	$(".cloth-item__check-box").on('click', function(){
+		if ( $(this).is(':checked') ) {
+			$(this).siblings("p").css('text-decoration', 'line-through');
+		}
+		else {
+			$(this).siblings("p").css('text-decoration', 'none');
+		}
+
 	});
 }
