@@ -33,7 +33,7 @@ exports.view = function(req, res){
   var today = new Date(); //get the current date
   today.setMinutes(today.getMinutes() - today.getTimezoneOffset()); //account for timezone differences
   today = today.toISOString().substring(0, 10); //reformat the string to match our data.json
-  //console.log( "today is " + today );
+  console.log( "today is " + today );
   for(var i = 0; i < events.length; i++){
     var eventSummary = (events[i]["summary"]).split(" ");
     var eventKey = eventSummary[0].toLowerCase();
