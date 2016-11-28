@@ -27,15 +27,19 @@ forecast.get([32.7157, 117.1611], true, function(err, weather) {
 exports.view = function(req, res){
   var userId = req.query.user;
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
-  data[userId]['testVersion1'] = '1'
+  data[userId]['testVersion1'] = '1';
   var clothes = [];
   var events = data[userId]["eventList"];
+  var today = new Date(); //get the current date
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset()); //account for timezone differences
+  today = today.toISOString().substring(0, 10); //reformat the string to match our data.json
+  //console.log( "today is " + today );
   for(var i = 0; i < events.length; i++){
     var eventSummary = (events[i]["summary"]).split(" ");
     var eventKey = eventSummary[0].toLowerCase();
     for(var j = 0; j < 3; j++){
       //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
-      if(data["inventory"][eventKey]){
+      if( events[i]["start"]["date"] == today && data["inventory"][eventKey]){
           clothes.push(data["inventory"][eventKey][j]);
       }
     }

@@ -34,6 +34,14 @@
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/index.js" charset="utf-8"></script>
 
+  <!-- auto fill the date -->
+  <script>
+      var today = new Date(); //get the current date
+      today.setMinutes(today.getMinutes() - today.getTimezoneOffset()); //account for timezone differences
+      today = today.toISOString().substring(0, 10); //reformat the string to match our data.json
+      document.getElementById('event-date-input').value = today;
+  </script>
+
     <!-- Google analytics -->
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -44,6 +52,7 @@
         ga('create', 'UA-87906372-1', 'auto');
         ga('send', 'pageview');
     </script>
+
 
 
 </body>
