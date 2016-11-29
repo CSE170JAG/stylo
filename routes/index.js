@@ -37,12 +37,17 @@ exports.view = function(req, res){
   for(var i = 0; i < events.length; i++){
     var eventSummary = (events[i]["summary"]).split(" ");
     var eventKey = eventSummary[0].toLowerCase();
-    var inventory = data["inventory"][eventKey];
-    //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
+    var inventory = (data["inventory"][eventKey]).slice();
+    for(var item in inventory){
+      inventory[item].eventName = events[i]["summary"];
+    }
     if( events[i]["start"]["date"] == today && data["inventory"][eventKey]){
       clothes = clothes.concat(inventory);
     }
   }
+
+  console.log(inventory);
+
   var uniqueClothes = {};
   for(var i = 0; i < clothes.length; i++){
     if(!uniqueClothes[clothes[i]]){
@@ -75,7 +80,6 @@ exports.viewSuggestAdd = function(req, res){
       //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
       if(data["inventory"][eventKey]){
           clothes.push(data["inventory"][eventKey][j]);
-          console.log(data["inventory"][eventKey][j]);
       }
     }
   }

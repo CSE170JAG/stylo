@@ -3,7 +3,7 @@
   {{#each clothList}}
     <div class="clothes-list__cloth-item">
       <img src="/images/{{this.itemImg}}" alt="" class="cloth-item__img">
-      <p class="cloth-item__description">{{this.itemName}}</p>
+      <p class="cloth-item__description"><b>{{this.itemName}}</b><br>for<br><b><i>{{this.eventName}}</i></b></p>
       <input class="cloth-item__check-box" type="checkbox" name="name" value="">
     </div>
     {{else}}
