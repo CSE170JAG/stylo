@@ -395,7 +395,6 @@ input[type="checkbox"].cloth-item__check-box {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: fixed;
   width: 100%;
   bottom: 40px; }
 
