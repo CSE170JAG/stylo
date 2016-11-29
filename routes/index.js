@@ -25,29 +25,55 @@ forecast.get([32.7157, 117.1611], true, function(err, weather) {
 });
 
 exports.view = function(req, res){
+
+  //Get the correct user
   var userId = req.query.user;
+
+  //Read data from data.json and get specific user
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
   data[userId]['testVersion1'] = '1';
   var clothes = [];
+
+  //Get list of events from current user
   var events = data[userId]["eventList"];
+
+  //Get current date of event
   var today = new Date(); //get the current date
   today.setMinutes(today.getMinutes() - today.getTimezoneOffset()); //account for timezone differences
   today = today.toISOString().substring(0, 10); //reformat the string to match our data.json
-  console.log( "today is " + today );
+
+  //Dictionary of events for title parsing
+  var eventDict = {
+    bonfire: true,
+    beach: true,
+    party: true,
+    bar: true,
+    interview: true,
+    dinner: true,
+    dining: true,
+    lunch: true,
+    hiking: true
+  };
+
   for(var i = 0; i < events.length; i++){
-    var eventSummary = (events[i]["summary"]).split(" ");
-    var eventKey = eventSummary[0].toLowerCase();
-    var inventory = (data["inventory"][eventKey]).slice();
-    for(var item in inventory){
-      inventory[item].eventName = events[i]["summary"];
-    }
-    if( events[i]["start"]["date"] == today && data["inventory"][eventKey]){
-      clothes = clothes.concat(inventory);
+    var eventTitle = events[i]["summary"];
+    var eventSummary = (eventTitle).split(" ");
+
+    for(var j = 0; j < eventSummary.length; j++){
+      if(eventSummary[j].toLowerCase() in eventDict){
+        var eventKey = eventSummary[j].toLowerCase();
+        var inventory = (data["inventory"][eventKey]).slice();
+        for(var item in inventory){
+          inventory[item].eventName = eventTitle;
+        }
+        if( events[i]["start"]["date"] == today && data["inventory"][eventKey]){
+          clothes = clothes.concat(inventory);
+        }
+      }
     }
   }
 
-  console.log(inventory);
-
+  //Obtain non duplicate items for the day
   var uniqueClothes = {};
   for(var i = 0; i < clothes.length; i++){
     if(!uniqueClothes[clothes[i]]){
@@ -58,11 +84,13 @@ exports.view = function(req, res){
   for(var name in uniqueClothes){
     newClothes.push(uniqueClothes[name]);
   }
+
+  //Add the clothes list, and weather data for index redering
   data[userId]['clothList'] = newClothes;
   data[userId]['weather'] = fcData;
-
   data[userId]["suggestAdd"] = false;
 
+  //Render Index on get request
   res.render('index', data[userId]);
 };
 
