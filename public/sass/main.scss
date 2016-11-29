@@ -323,7 +323,7 @@ header{
 }
 .cloth-item__img{
   width: 100px;
-  height: 100px; 
+  height: 100px;
 }
 .clothes-list__cloth-item, .events__event-item{
   background: #fff;
@@ -443,12 +443,12 @@ input[type="checkbox"].cloth-item__check-box{
   background: $accent-color;
 }
 
-/*----------MANAGE EVENTS CONTAINER---------------*/
+/*----------MANAGE EVENTS CONTAINER---------------*/ 
 .back-finish-container{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 40px;
 }
