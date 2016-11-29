@@ -171,7 +171,7 @@ app.get('/', login.view);
 app.get('/loggedin/', index.view);
 
 // For use in A/B testing
-app.get('/loggedin2/', index.viewSuggestAdd);
+//app.get('/loggedin2/', index.viewSuggestAdd);
 //app.get('/loggedin2/:userId', index2.view);
 
 

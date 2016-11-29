@@ -31,7 +31,7 @@ exports.view = function(req, res){
 
   //Read data from data.json and get specific user
   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
-  data[userId]['testVersion1'] = '1';
+  // data[userId]['testVersion1'] = '1';
   var clothes = [];
 
   //Get list of events from current user
@@ -94,24 +94,24 @@ exports.view = function(req, res){
   res.render('index', data[userId]);
 };
 
-exports.viewSuggestAdd = function(req, res){
-  console.log(req.session);
-  var userId = req.query.user;
-  var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
-  data[userId]['testVersion2'] = '2'
-  var clothes = [];
-  var events = data[userId]["eventList"];
-  for(var i = 0; i < events.length; i++){
-    var eventSummary = (events[i]["summary"]).split(" ");
-    var eventKey = eventSummary[0].toLowerCase();
-    for(var j = 0; j < 3; j++){
-      //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
-      if(data["inventory"][eventKey]){
-          clothes.push(data["inventory"][eventKey][j]);
-      }
-    }
-  }
-  data[userId]['clothList'] = clothes;
-  data[userId]['weather'] = fcData;
-  res.render('index2', data[userId]);
-};
+// exports.viewSuggestAdd = function(req, res){
+//   console.log(req.session);
+//   var userId = req.query.user;
+//   var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+//   data[userId]['testVersion2'] = '2'
+//   var clothes = [];
+//   var events = data[userId]["eventList"];
+//   for(var i = 0; i < events.length; i++){
+//     var eventSummary = (events[i]["summary"]).split(" ");
+//     var eventKey = eventSummary[0].toLowerCase();
+//     for(var j = 0; j < 3; j++){
+//       //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
+//       if(data["inventory"][eventKey]){
+//           clothes.push(data["inventory"][eventKey][j]);
+//       }
+//     }
+//   }
+//   data[userId]['clothList'] = clothes;
+//   data[userId]['weather'] = fcData;
+//   res.render('index2', data[userId]);
+// };
