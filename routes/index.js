@@ -37,14 +37,23 @@ exports.view = function(req, res){
   for(var i = 0; i < events.length; i++){
     var eventSummary = (events[i]["summary"]).split(" ");
     var eventKey = eventSummary[0].toLowerCase();
-    for(var j = 0; j < 3; j++){
-      //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
-      if( events[i]["start"]["date"] == today && data["inventory"][eventKey]){
-          clothes.push(data["inventory"][eventKey][j]);
-      }
+    var inventory = data["inventory"][eventKey];
+    //var randomItem = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
+    if( events[i]["start"]["date"] == today && data["inventory"][eventKey]){
+      clothes = clothes.concat(inventory);
     }
   }
-  data[userId]['clothList'] = clothes;
+  var uniqueClothes = {};
+  for(var i = 0; i < clothes.length; i++){
+    if(!uniqueClothes[clothes[i]]){
+      uniqueClothes[clothes[i].itemName] = clothes[i];
+    }
+  }
+  var newClothes = [];
+  for(var name in uniqueClothes){
+    newClothes.push(uniqueClothes[name]);
+  }
+  data[userId]['clothList'] = newClothes;
   data[userId]['weather'] = fcData;
 
   data[userId]["suggestAdd"] = false;
