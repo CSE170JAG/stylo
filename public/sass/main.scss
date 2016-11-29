@@ -42,7 +42,7 @@ a{
 }
 
 .login-container-input{
-  position: absolute;
+  position: fixed;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -423,7 +423,7 @@ input[type="checkbox"].cloth-item__check-box{
 }
 
 .cancel-submit-container{
-  position: absolute;
+  position: fixed;
   top: 87vh;
   display: flex;
   justify-content: space-around;
